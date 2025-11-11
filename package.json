@@ -1,0 +1,23 @@
+{
+  "name": "nl.xr-lab.toolkit-greybox",
+  "version": "0.0.0",
+  "displayName": "XR-Lab Toolkit Greybox",
+  "description": "Contains Greybox tooling for rapid prototyping, focussing on XR projects.",
+  "unity": "6000.2",
+	"author": {
+		"name": "XR-Lab",
+		"url": "https://xr-lab.nl",
+		"email": "info@xr-lab.nl"
+	},
+	"dependencies": {},
+	"keywords": [
+		"xr-lab",
+		"toolkit",
+		"greybox",
+		"xr",
+		"vr",
+		"ar",
+		"rapid-prototyping"
+	]
+}
+
