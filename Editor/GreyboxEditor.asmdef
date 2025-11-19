@@ -1,0 +1,30 @@
+{
+    "name": "GreyboxEditor",
+    "rootNamespace": "NL.XRLab.ToolkitGreybox.Editor",
+    "references": [
+        "GUID:866e09845acf45254b29cb6207ce1ca1"
+    ],
+    "includePlatforms": [
+        "Editor",
+        "ReservedCFE",
+        "tvOS",
+        "WSA",
+        "VisionOS",
+        "WebGL",
+        "WindowsStandalone32",
+        "WindowsStandalone64",
+        "WindowsStandalone32Server",
+        "WindowsStandalone64Server",
+        "GameCoreXboxOne",
+        "XboxOne",
+        "GameCoreScarlett"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
