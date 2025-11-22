@@ -10,8 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ae1ee1b89deed417b8c92cfde454b606, type: 3}
-  m_Name: StartModule
+  m_Name: Start Module
   m_EditorClassIdentifier: XRLab.Toolkit.Greybox::GameplayModuleData
-  _scenePath: Packages/nl.xr-lab.toolkit-greybox/Samples/Puzzle Dependent Door/Scenes/StartScene.unity
+  _scenePath: Packages/nl.xr-lab.toolkit-greybox/Samples/Puzzle Dependent Door/Gameplay
+    Modules/Start Module.unity
   ConnectedModules: []
-  _sceneAsset: {fileID: 102900000, guid: dfa611372ce84f03ca4c3becfc23547f, type: 3}
+  _sceneAsset: {fileID: 102900000, guid: 264307349cfb8984d9f25ffaa569c52d, type: 3}

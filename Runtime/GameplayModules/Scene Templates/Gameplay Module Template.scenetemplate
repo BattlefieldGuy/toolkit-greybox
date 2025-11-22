@@ -13,11 +13,12 @@ MonoBehaviour:
   m_Name: Gameplay Module Template
   m_EditorClassIdentifier: UnityEditor.dll::UnityEditor.SceneTemplate.SceneTemplateAsset
   templateScene: {fileID: 102900000, guid: 24462443b06be94658ec6e2c5e3dac84, type: 3}
-  templateName: 
-  description: 
+  templateName: Gameplay Module Scene
+  description: A template to create a Gameplay Module Scene. (Belongs to the XR-Lab
+    Toolkit Greybox package.)
   preview: {fileID: 0}
   dependencies:
-  - dependency: {fileID: 1383987716133390646, guid: 2fbf65ef74bc10426b3fc68695f98f37, type: 3}
+  - dependency: {fileID: 3403694063724489314, guid: ee0810d249aad3e41aec704a130d7eae, type: 3}
     instantiationMode: 1
   templatePipeline: {fileID: 0}
   badge: {fileID: 0}
