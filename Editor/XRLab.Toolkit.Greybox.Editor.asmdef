@@ -1,0 +1,18 @@
+{
+	"name": "XRLab.Toolkit.Greybox.Editor",
+	"rootNamespace": "NL.XRLab.Toolkit.Greybox.Editor",
+	"references": [
+		"GUID:866e09845acf45254b29cb6207ce1ca1"
+	],
+	"includePlatforms": [
+		"Editor"
+	],
+	"excludePlatforms": [],
+	"allowUnsafeCode": false,
+	"overrideReferences": false,
+	"precompiledReferences": [],
+	"autoReferenced": true,
+	"defineConstraints": [],
+	"versionDefines": [],
+	"noEngineReferences": false
+}
