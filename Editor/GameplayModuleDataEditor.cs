@@ -2,7 +2,7 @@ using NL.XRLab.ToolkitGreybox.GameplayModules;
 using UnityEditor;
 using UnityEngine;
 
-namespace NL.XRLab.ToolkitGreybox.Editor
+namespace NL.XRLab.Toolkit.Greybox.Editor
 {
 	/// <summary>
 	///    Custom editor for GameplayModuleData:
