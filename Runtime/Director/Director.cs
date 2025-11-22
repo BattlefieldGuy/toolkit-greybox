@@ -24,12 +24,7 @@ namespace NL.XRLab.ToolkitGreybox.Director
 		[Tooltip("All gameplay modules in the game. Non-sequential.")] [SerializeField]
 		private List<GameplayModuleData> _gameplayModules = new();
 
-		/// <summary>
-		///    The gameplay module that should be loaded when the game starts.
-		/// </summary>
-		[Tooltip("The gameplay module that should be loaded upon game start.")]
-		[field: SerializeField]
-		public GameplayModuleDataEntry StartingModule { get; private set; }
+		[SerializeField] private GameplayModuleDataEntry _startingModule;
 
 		/// <summary>
 		///    Event triggered when a module finishes preloading (~90% loaded).
@@ -50,6 +45,12 @@ namespace NL.XRLab.ToolkitGreybox.Director
 		///    Dictionary to track preloaded modules. Maps GameplayModuleData to AsyncOperation instances.
 		/// </summary>
 		private readonly Dictionary<GameplayModuleData, AsyncOperation> _readyModules = new();
+
+		/// <summary>
+		///    Read-only property to access the StartingModule.
+		/// </summary>
+		[Tooltip("The gameplay module that should be loaded upon game start.")]
+		public GameplayModuleDataEntry StartingModule => _startingModule;
 
 		/// <summary>
 		///    Read-only property to access the list of all gameplay modules.
