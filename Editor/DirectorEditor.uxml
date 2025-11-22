@@ -1,0 +1,6 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements"
+			noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+	<uie:PropertyField binding-path="_gameplayModules"/>
+	<ui:Button text="Sync Build Settings" name="syncBuildSettingsButton"/>
+	<uie:PropertyField binding-path="_startingModule"/>
+</ui:UXML>
