@@ -1,11 +1,10 @@
 using System.Collections.Generic;
 using System.Linq;
-using NL.XRLab.ToolkitGreybox.Director;
 using NL.XRLab.ToolkitGreybox.GameplayModules;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
-using Logger = NL.XRLab.ToolkitGreybox.Utils.Logger;
+using Logger = NL.XRLab.Toolkit.Greybox.Utils.Logger;
 
 namespace NL.XRLab.Toolkit.Greybox.Editor
 {
