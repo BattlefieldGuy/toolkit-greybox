@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace NL.XRLab.ToolkitGreybox.Utils
+namespace NL.XRLab.Toolkit.Greybox.Utils
 {
 	public static class Logger
 	{

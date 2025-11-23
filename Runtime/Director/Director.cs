@@ -1,11 +1,12 @@
 using System.Collections.Generic;
+using NL.XRLab.Toolkit.Greybox.Director.Loader;
+using NL.XRLab.Toolkit.Greybox.Utils;
 using NL.XRLab.ToolkitGreybox.GameplayModules;
-using NL.XRLab.ToolkitGreybox.Utils;
 using UnityEngine;
 using UnityEngine.Events;
-using Logger = NL.XRLab.ToolkitGreybox.Utils.Logger;
+using Logger = NL.XRLab.Toolkit.Greybox.Utils.Logger;
 
-namespace NL.XRLab.ToolkitGreybox.Director
+namespace NL.XRLab.Toolkit.Greybox.Director
 {
 	/// <summary>
 	///    Manages the lifecycle of gameplay modules in the application. Acts as a singleton
@@ -111,7 +112,7 @@ namespace NL.XRLab.ToolkitGreybox.Director
 
 			// Log and delegate the actual loading to the ModuleLoader.
 			Logger.Log($"Loading Module: '{moduleToLoad.name}'");
-			ModuleLoader.Instance.LoadModule(
+			ModuleLoader.LoadModule(
 				moduleToLoad,
 				loadModuleMode,
 				sceneReadyEvent,

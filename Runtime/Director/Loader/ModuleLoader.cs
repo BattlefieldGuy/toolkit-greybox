@@ -1,34 +1,18 @@
 using System.Collections;
-using NL.XRLab.ToolkitGreybox.Utils;
+using NL.XRLab.ToolkitGreybox.GameplayModules;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
-using Logger = NL.XRLab.ToolkitGreybox.Utils.Logger;
+using Logger = NL.XRLab.Toolkit.Greybox.Utils.Logger;
 
-namespace NL.XRLab.ToolkitGreybox.GameplayModules
+namespace NL.XRLab.Toolkit.Greybox.Director.Loader
 {
 	/// <summary>
 	///    Singleton that handles loading and unloading gameplay modules (Unity scenes) asynchronously.
 	///    Supports additive/single loading, preloading (deferred activation), and module/scene callbacks.
 	/// </summary>
-	public class ModuleLoader : MonoBehaviour
+	public static class ModuleLoader
 	{
-		private static ModuleLoader _instance;
-
-		/// <summary>
-		///    Gets the singleton instance of the <see cref="ModuleLoader" />.
-		/// </summary>
-		public static ModuleLoader Instance => _instance;
-
-		/// <summary>
-		///    Ensure only one instance of the ModuleLoader exists.
-		///    Uses <see cref="SingletonUtils.HandleSingletonCreation(ref ModuleLoader, ModuleLoader)" />.
-		/// </summary>
-		private void Awake()
-		{
-			SingletonUtils.HandleSingletonCreation(ref _instance, this);
-		}
-
 		/// <summary>
 		///    Starts loading a gameplay module (scene) asynchronously.
 		/// </summary>
@@ -47,7 +31,7 @@ namespace NL.XRLab.ToolkitGreybox.GameplayModules
 		///    Optional event invoked after the scene has been loaded and activated.
 		///    The event receives the <see cref="GameplayModule" /> instance found in the loaded scene (or null if not found).
 		/// </param>
-		public void LoadModule(
+		public static void LoadModule(
 			GameplayModuleData moduleToLoad,
 			LoadModuleMode loadModuleMode,
 			UnityEvent<AsyncOperation, GameplayModuleData> sceneReadyEvent = null,
@@ -91,7 +75,8 @@ namespace NL.XRLab.ToolkitGreybox.GameplayModules
 			asyncOp.allowSceneActivation = loadModuleMode != LoadModuleMode.Preload;
 
 			// Start coroutine to monitor the loading process and fire relevant events.
-			StartCoroutine(WaitForSceneLoad(moduleToLoad, asyncOp, scenePath, loadModuleMode == LoadModuleMode.Preload,
+			Director.Instance.StartCoroutine(WaitForSceneLoad(moduleToLoad, asyncOp, scenePath,
+				loadModuleMode == LoadModuleMode.Preload,
 				sceneReadyEvent,
 				sceneActivatedEvent));
 		}
