@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-namespace NL.XRLab.ToolkitGreybox.GameplayModules
+namespace NL.XRLab.Toolkit.Greybox.GameplayModules
 {
 	/// <summary>
 	///    ScriptableObject representing a gameplay module in the game.

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using NL.XRLab.Toolkit.Greybox.Director.Loader;
+using NL.XRLab.Toolkit.Greybox.GameplayModules;
 using NL.XRLab.Toolkit.Greybox.Utils;
-using NL.XRLab.ToolkitGreybox.GameplayModules;
 using UnityEngine;
 using UnityEngine.Events;
 using Logger = NL.XRLab.Toolkit.Greybox.Utils.Logger;
@@ -12,12 +12,12 @@ namespace NL.XRLab.Toolkit.Greybox.Director
 	///    Manages the lifecycle of gameplay modules in the application. Acts as a singleton
 	///    responsible for loading, activating, and tracking gameplay modules.
 	/// </summary>
-	public class Director : MonoBehaviour
+	public class GameplayDirector : MonoBehaviour
 	{
 		/// <summary>
 		///    Internal backing field for the singleton instance.
 		/// </summary>
-		private static Director _instance;
+		private static GameplayDirector _instance;
 
 		/// <summary>
 		///    List of all gameplay modules available in the game. Configurable in the Unity Inspector.
@@ -61,7 +61,7 @@ namespace NL.XRLab.Toolkit.Greybox.Director
 		/// <summary>
 		///    Singleton instance of the Director.
 		/// </summary>
-		public static Director Instance => _instance;
+		public static GameplayDirector Instance => _instance;
 
 		public void Awake()
 		{

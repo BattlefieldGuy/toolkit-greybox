@@ -1,0 +1,11 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements"
+			noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+	<uie:PropertyField binding-path="_gameplayModules"/>
+	<ui:HelpBox
+		text="ℹ️ After adding new Gameplay Modules, click the Sync Build Settings button to add the respective scenes to the BuildProfile automatically."
+		style="padding-top: 10px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px; margin-top: 20px;"/>
+	<ui:Button text="Sync Build Settings" name="syncBuildSettingsButton"/>
+	<ui:HelpBox text="ℹ️ The Starting Module is loaded by the Director upon entering Play mode."
+					style="padding-top: 10px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px; margin-top: 20px;"/>
+	<uie:PropertyField binding-path="_startingModule"/>
+</ui:UXML>

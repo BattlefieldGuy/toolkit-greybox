@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
-using NL.XRLab.ToolkitGreybox.GameplayModules;
+using NL.XRLab.Toolkit.Greybox.Director;
+using NL.XRLab.Toolkit.Greybox.GameplayModules;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -8,16 +9,16 @@ using Logger = NL.XRLab.Toolkit.Greybox.Utils.Logger;
 
 namespace NL.XRLab.Toolkit.Greybox.Editor
 {
-	[CustomEditor(typeof(Director))]
-	public class DirectorEditor : UnityEditor.Editor
+	[CustomEditor(typeof(GameplayDirector))]
+	public class GameplayDirectorEditor : UnityEditor.Editor
 	{
 		[SerializeField] private VisualTreeAsset _visualTreeAsset;
 
-		private Director _director;
+		private GameplayDirector _director;
 
 		private void OnEnable()
 		{
-			_director = (Director)target;
+			_director = (GameplayDirector)target;
 		}
 
 		public override VisualElement CreateInspectorGUI()

@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace NL.XRLab.ToolkitGreybox.GameplayModules
+namespace NL.XRLab.Toolkit.Greybox.GameplayModules
 {
 	public class GameplayModule : MonoBehaviour
 	{

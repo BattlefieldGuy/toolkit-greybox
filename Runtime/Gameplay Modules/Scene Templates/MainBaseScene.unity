@@ -480,7 +480,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1383987716133390646, guid: 2fbf65ef74bc10426b3fc68695f98f37, type: 3}
       propertyPath: m_Name
-      value: Director
+      value: Gameplay Director
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

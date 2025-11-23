@@ -1,5 +1,5 @@
 using System.Collections;
-using NL.XRLab.ToolkitGreybox.GameplayModules;
+using NL.XRLab.Toolkit.Greybox.GameplayModules;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
@@ -75,7 +75,7 @@ namespace NL.XRLab.Toolkit.Greybox.Director.Loader
 			asyncOp.allowSceneActivation = loadModuleMode != LoadModuleMode.Preload;
 
 			// Start coroutine to monitor the loading process and fire relevant events.
-			Director.Instance.StartCoroutine(WaitForSceneLoad(moduleToLoad, asyncOp, scenePath,
+			GameplayDirector.Instance.StartCoroutine(WaitForSceneLoad(moduleToLoad, asyncOp, scenePath,
 				loadModuleMode == LoadModuleMode.Preload,
 				sceneReadyEvent,
 				sceneActivatedEvent));

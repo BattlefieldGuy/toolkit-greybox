@@ -1,6 +1,7 @@
 ﻿using System;
+using NL.XRLab.Toolkit.Greybox.Director.Loader;
 
-namespace NL.XRLab.ToolkitGreybox.GameplayModules
+namespace NL.XRLab.Toolkit.Greybox.GameplayModules
 {
 	[Serializable]
 	public class GameplayModuleDataEntry

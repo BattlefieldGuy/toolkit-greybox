@@ -1,4 +1,4 @@
-namespace NL.XRLab.ToolkitGreybox.GameplayModules
+namespace NL.XRLab.Toolkit.Greybox.Director.Loader
 {
 	/// <summary>
 	///    Defines how a gameplay module should be loaded.

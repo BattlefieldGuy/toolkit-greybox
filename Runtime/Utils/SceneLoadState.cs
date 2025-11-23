@@ -2,7 +2,7 @@ using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace NL.XRLab.ToolkitGreybox.Utils
+namespace NL.XRLab.Toolkit.Greybox.Utils
 {
 	public class SceneLoadState
 	{

@@ -1,4 +1,4 @@
-using NL.XRLab.ToolkitGreybox.GameplayModules;
+using NL.XRLab.Toolkit.Greybox.GameplayModules;
 using UnityEditor;
 using UnityEngine;
 
