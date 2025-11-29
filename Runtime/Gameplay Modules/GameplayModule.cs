@@ -7,6 +7,8 @@ namespace NL.XRLab.Toolkit.Greybox.GameplayModules
 	{
 		[SerializeField] public GameplayModuleData GameplayModuleData;
 
+		public GameplaySequence GameplaySequence;
+
 		public UnityEvent<GameplayModule> OnModuleCompleted = new();
 
 		private void CompleteModule()
