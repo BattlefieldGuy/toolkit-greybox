@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using NL.XRLab.Toolkit.Greybox.GameplayModules;
 using UnityEditor;
 using UnityEditor.UIElements;
 using UnityEngine;
@@ -9,8 +8,7 @@ using UnityEngine.UIElements;
 
 namespace NL.XRLab.Toolkit.Greybox.Editor
 {
-	[CustomPropertyDrawer(typeof(ConditionalUnityEvent))]
-	public class ConditionalUnityEventDrawer : PropertyDrawer
+	public class OldConditionalUnityEventDrawer : PropertyDrawer
 	{
 		private DropdownField _componentDropdown;
 		private List<Component> _componentsOnTarget = new();
@@ -18,6 +16,7 @@ namespace NL.XRLab.Toolkit.Greybox.Editor
 		private GameObject _conditionTarget;
 
 		private ObjectField _conditionTargetField;
+		private Toggle _filterDefaultMethodsToggle;
 		private DropdownField _methodDropdown;
 		private Component _selectedComponent;
 		[SerializeField] private VisualTreeAsset _visualTreeAsset;
@@ -33,6 +32,7 @@ namespace NL.XRLab.Toolkit.Greybox.Editor
 			_conditionTargetField = root.Q<ObjectField>("conditionTargetField");
 			_componentDropdown = root.Q<DropdownField>("componentDropdown");
 			_methodDropdown = root.Q<DropdownField>("methodDropdown");
+			_filterDefaultMethodsToggle = root.Q<Toggle>("filterDefaultMethodsToggle");
 
 			// --- GameObject Field ---
 			_conditionTargetField.objectType = typeof(GameObject);
@@ -61,7 +61,7 @@ namespace NL.XRLab.Toolkit.Greybox.Editor
 			{
 				if (_componentsOnTarget.Count == 0) return;
 
-				var selectedIndex = _componentDropdown.choices.IndexOf(evt.newValue);
+				int selectedIndex = _componentDropdown.choices.IndexOf(evt.newValue);
 				if (selectedIndex >= 0 && selectedIndex < _componentsOnTarget.Count)
 				{
 					_selectedComponent = _componentsOnTarget[selectedIndex];

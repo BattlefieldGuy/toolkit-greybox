@@ -4,24 +4,26 @@ namespace NL.XRLab.Toolkit.Greybox
 {
 	public class Foo : MonoBehaviour
 	{
-		// Start is called once before the first execution of Update after the MonoBehaviour is created
-		private void Start()
+		[SerializeField] private bool _myBoolProp;
+
+		public void PrintHello()
 		{
+			Debug.Log("Hello");
 		}
 
-		// Update is called once per frame
-		private void Update()
-		{
-		}
-
-		public bool MyCondition()
+		public bool MyTrueCondition()
 		{
 			return true;
 		}
 
-		public int MyInt()
+		public bool MyFalseCondition()
 		{
-			return 1;
+			return false;
+		}
+
+		public bool MyBoolPropCondition()
+		{
+			return _myBoolProp;
 		}
 	}
 }

@@ -1,0 +1,9 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="True">
+	<ui:Foldout text="Condition" name="ConditionFoldout">
+		<uie:ObjectField name="conditionTargetField" label="Condition Target"/>
+		<uie:DropdownField name="componentDropdown" label="Component"/>
+		<uie:DropdownField name="methodDropdown" label="Method"/>
+		<ui:Toggle label="Filter Default Methods" value="true" name="filterDefaultMethodsToggle"/>
+	</ui:Foldout>
+	<uie:PropertyField name="unityEventField" binding-path="_unityEvent"/>
+</ui:UXML>
