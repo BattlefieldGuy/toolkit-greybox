@@ -16,6 +16,7 @@ namespace NL.XRLab.Toolkit.Greybox.Editor
 		private SerializedProperty _connectedModulesProp;
 		private SerializedProperty _sceneAssetProp;
 		private SerializedProperty _scenePathProp;
+		private SerializedProperty _unloadSceneOnCompletionProp;
 
 		private void OnEnable()
 		{
@@ -23,6 +24,7 @@ namespace NL.XRLab.Toolkit.Greybox.Editor
 			_sceneAssetProp = serializedObject.FindProperty("_sceneAsset");
 			_scenePathProp = serializedObject.FindProperty("_scenePath");
 			_connectedModulesProp = serializedObject.FindProperty("ConnectedModules");
+			_unloadSceneOnCompletionProp = serializedObject.FindProperty("UnloadSceneOnCompletion");
 		}
 
 		public override void OnInspectorGUI()
@@ -61,6 +63,8 @@ namespace NL.XRLab.Toolkit.Greybox.Editor
 			GUI.enabled = true;
 
 			EditorGUILayout.Space(8);
+
+			EditorGUILayout.PropertyField(_unloadSceneOnCompletionProp, new GUIContent("Unload Scene On Completion"));
 
 			// Connected modules list (editable)
 			EditorGUILayout.PropertyField(_connectedModulesProp, new GUIContent("Connected Modules"), true);

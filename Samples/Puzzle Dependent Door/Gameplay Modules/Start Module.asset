@@ -14,5 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: XRLab.Toolkit.Greybox::GameplayModuleData
   _scenePath: Packages/nl.xr-lab.toolkit-greybox/Samples/Puzzle Dependent Door/Gameplay
     Modules/Start Module.unity
-  ConnectedModules: []
+  ConnectedModules:
+  - GameplayModuleData: {fileID: 11400000, guid: bbe8b0fae04ba2f4b8eb170936c5649e, type: 2}
+    LoadModuleMode: 0
   _sceneAsset: {fileID: 102900000, guid: 264307349cfb8984d9f25ffaa569c52d, type: 3}

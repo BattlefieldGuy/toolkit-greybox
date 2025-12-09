@@ -20,7 +20,7 @@ namespace NL.XRLab.Toolkit.Greybox.Extensions.Events
 		/// </summary>
 		public void CacheConditionDelegates()
 		{
-			foreach (SerializableCondition condition in _conditions) condition.CacheConditionDelegate();
+			foreach (var condition in _conditions) condition.CacheConditionDelegate();
 		}
 
 		/// <summary>
@@ -28,7 +28,7 @@ namespace NL.XRLab.Toolkit.Greybox.Extensions.Events
 		/// </summary>
 		private bool ConditionsAreMet()
 		{
-			foreach (SerializableCondition condition in _conditions)
+			foreach (var condition in _conditions)
 				// Stop and return false as soon as one condition is not met
 				if (!condition.IsMet())
 					return false;
@@ -40,9 +40,11 @@ namespace NL.XRLab.Toolkit.Greybox.Extensions.Events
 		/// <summary>
 		///    Invokes the underlying UnityEvent if all conditions are met.
 		/// </summary>
-		public void TryInvoke()
+		public bool TryInvoke()
 		{
-			if (ConditionsAreMet()) _unityEvent.Invoke();
+			if (!ConditionsAreMet()) return false;
+			_unityEvent.Invoke();
+			return true;
 		}
 	}
 }

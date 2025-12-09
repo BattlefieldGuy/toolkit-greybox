@@ -25,6 +25,11 @@ namespace NL.XRLab.Toolkit.Greybox.GameplayModules
 		public List<GameplayModuleDataEntry> ConnectedModules;
 
 		/// <summary>
+		///    Whether to unload this module's scene upon completion.
+		/// </summary>
+		public bool UnloadSceneOnCompletion = true;
+
+		/// <summary>
 		///    Public readonly getter for the scene path.
 		/// </summary>
 		public string ScenePath => _scenePath;

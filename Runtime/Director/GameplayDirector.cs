@@ -4,6 +4,7 @@ using NL.XRLab.Toolkit.Greybox.GameplayModules;
 using NL.XRLab.Toolkit.Greybox.Utils;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 using Logger = NL.XRLab.Toolkit.Greybox.Utils.Logger;
 
 namespace NL.XRLab.Toolkit.Greybox.Director
@@ -100,7 +101,7 @@ namespace NL.XRLab.Toolkit.Greybox.Director
 		/// <param name="loadModuleMode">Specifies the loading mode (Single, Additive, Preload).</param>
 		/// <param name="sceneReadyEvent">Optional event triggered when the module is preloaded.</param>
 		/// <param name="sceneActivatedEvent">Optional event triggered when the module is activated.</param>
-		private void LoadModule(GameplayModuleData moduleToLoad, LoadModuleMode loadModuleMode,
+		public void LoadModule(GameplayModuleData moduleToLoad, LoadModuleMode loadModuleMode,
 			UnityEvent<AsyncOperation, GameplayModuleData> sceneReadyEvent = null,
 			UnityEvent<GameplayModule> sceneActivatedEvent = null)
 		{
@@ -151,8 +152,20 @@ namespace NL.XRLab.Toolkit.Greybox.Director
 				return;
 			}
 
+			loadedModule.OnModuleCompleted.AddListener(LoadConnectedModules);
+
+
 			Logger.Log($"Active module added: '{loadedModule.GameplayModuleData.name}'");
 			OnModuleActivated.Invoke(loadedModule);
+		}
+
+		private void LoadConnectedModules(GameplayModule module)
+		{
+			foreach (GameplayModuleDataEntry gameplayModuleDataEntry in module.GameplayModuleData.ConnectedModules)
+				LoadModule(gameplayModuleDataEntry.GameplayModuleData, gameplayModuleDataEntry.LoadModuleMode);
+
+			if (module.GameplayModuleData.UnloadSceneOnCompletion)
+				SceneManager.UnloadSceneAsync(module.GameplayModuleData.SceneAsset.name);
 		}
 	}
 }

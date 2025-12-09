@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae1ee1b89deed417b8c92cfde454b606, type: 3}
+  m_Name: Finish Module
+  m_EditorClassIdentifier: XRLab.Toolkit.Greybox::GameplayModuleData
+  _scenePath: Packages/nl.xr-lab.toolkit-greybox/Samples/Puzzle Dependent Door/Gameplay
+    Modules/Finish Module.unity
+  ConnectedModules: []
+  UnloadSceneOnCompletion: 0
+  _sceneAsset: {fileID: 102900000, guid: 6f32ca6ada6478b499ec41a014dee1c8, type: 3}

@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3606622794313025912}
-  - component: {fileID: 5793540713094422145}
+  - component: {fileID: 395934010947314269}
   m_Layer: 0
   m_Name: Gameplay Module
   m_TagString: Untagged
@@ -32,7 +32,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5793540713094422145
+--- !u!114 &395934010947314269
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -43,8 +43,10 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c369e8fedf3dad94d853234070d96162, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: XRLab.Toolkit.Greybox::GameplayModule
+  m_EditorClassIdentifier: XRLab.Toolkit.Greybox::NL.XRLab.Toolkit.Greybox.GameplayModules.GameplayModule
   GameplayModuleData: {fileID: 0}
+  GameplaySequence:
+    _events: []
   OnModuleCompleted:
     m_PersistentCalls:
       m_Calls: []
