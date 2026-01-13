@@ -59,11 +59,10 @@ namespace NL.XRLab.Toolkit.Greybox.Director.Loader
 					"ModuleLoader: sceneReadyEvent provided but loadModuleMode is not Preload. The event will be ignored.");
 
 			// Determine Unity's LoadSceneMode based on the requested module load mode.
-			LoadSceneMode loadMode =
-				loadModuleMode == LoadModuleMode.Single ? LoadSceneMode.Single : LoadSceneMode.Additive;
+			var loadMode = LoadSceneMode.Additive;
 
 			// Begin asynchronous scene load.
-			AsyncOperation asyncOp = SceneManager.LoadSceneAsync(scenePath, loadMode);
+			var asyncOp = SceneManager.LoadSceneAsync(scenePath, loadMode);
 			if (asyncOp == null)
 			{
 				// If the AsyncOperation is null, the scene couldn't be requested for loading.
@@ -128,7 +127,7 @@ namespace NL.XRLab.Toolkit.Greybox.Director.Loader
 			}
 
 			// Scene is now loaded and activated (or was loaded directly when not preloading).
-			Scene loadedScene = SceneManager.GetSceneByPath(scenePath);
+			var loadedScene = SceneManager.GetSceneByPath(scenePath);
 
 			// Validate that the scene loaded successfully.
 			if (!loadedScene.IsValid())
@@ -150,8 +149,8 @@ namespace NL.XRLab.Toolkit.Greybox.Director.Loader
 		/// </returns>
 		private static GameplayModule GetModuleMonoBehaviourFromLoadedScene(Scene scene)
 		{
-			GameObject[] rootObjects = scene.GetRootGameObjects();
-			foreach (GameObject rootObject in rootObjects)
+			var rootObjects = scene.GetRootGameObjects();
+			foreach (var rootObject in rootObjects)
 			{
 				rootObject.TryGetComponent(out GameplayModule module);
 				if (module) return module;
