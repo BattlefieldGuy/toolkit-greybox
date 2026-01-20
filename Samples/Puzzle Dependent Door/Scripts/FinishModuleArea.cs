@@ -16,7 +16,7 @@ namespace NL.XRLab.Toolkit.Greybox.Samples.Samples.PuzzleDependentDoor.Scripts
 		private void OnTriggerEnter(Collider other)
 		{
 			Debug.Log("Trigger enter");
-			_gameplayModule.GameplaySequence.TryInvokeNextEvent();
+			_gameplayModule.GameplaySequence.TryInvokeCurrentEvent();
 		}
 	}
 }

@@ -10,35 +10,56 @@ namespace NL.XRLab.Toolkit.Greybox.GameplayModules
 	[Serializable]
 	public class GameplaySequence
 	{
-		[SerializeField] private List<ConditionalUnityEvent> _events;
+		[SerializeField] private List<ConditionalUnityEvent> _events = new();
 
 		public UnityEvent OnSequenceFinished = new();
 
-
-		private int _currentEventIndex = 0;
+		private int _currentEventIndex;
 
 		public List<ConditionalUnityEvent> Events => _events;
 
-		private ConditionalUnityEvent NextEvent => !HasNextEvent ? null : Events[_currentEventIndex + 1];
+		private ConditionalUnityEvent CurrentEvent => HasEventLeft ? Events[_currentEventIndex] : null;
 
-		private bool HasNextEvent => _currentEventIndex + 1 < Events.Count;
+		public bool HasEventLeft => _currentEventIndex < Events.Count;
+
+		public GameplayModule BelongingModule { get; set; }
 
 		public void CacheConditionDelegates()
 		{
-			foreach (ConditionalUnityEvent conditionalEvent in _events)
+			foreach (var conditionalEvent in _events)
 				conditionalEvent.CacheConditionDelegates();
 		}
 
-		public void TryInvokeNextEvent()
+		public void TryInvokeCurrentEvent()
 		{
-			if (!HasNextEvent)
+			Logger.Log(
+				$"Trying to invoke current event in GameplaySequence for {BelongingModule.GameplayModuleData.name}. (Total events: {Events.Count}, Current index: {_currentEventIndex})");
+			if (!HasEventLeft)
 			{
-				Logger.LogWarning("No more events to invoke in GameplaySequence, marking sequence as finished.");
-				OnSequenceFinished.Invoke();
+				CompleteSequence();
 				return;
 			}
 
-			if (!NextEvent.TryInvoke()) Logger.LogWarning("TryInvokeNextEvent: Conditions for next event not met.");
+			if (!CurrentEvent.TryInvoke())
+			{
+				Logger.LogWarning("TryInvokeNextEvent: Conditions for next event not met.");
+				return;
+			}
+
+			CompleteEvent();
+		}
+
+		private void CompleteEvent()
+		{
+			_currentEventIndex++;
+			if (!HasEventLeft)
+				CompleteSequence();
+		}
+
+		private void CompleteSequence()
+		{
+			Logger.Log($"GameplaySequence completed for {BelongingModule.GameplayModuleData.name}.");
+			OnSequenceFinished.Invoke();
 		}
 	}
 }

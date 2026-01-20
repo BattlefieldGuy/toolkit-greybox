@@ -56,7 +56,7 @@ namespace NL.XRLab.Toolkit.Greybox.Extensions.Events
 
 				// 3. Find the specific component instance using the index
 				// GetComponents(Type) returns all components of that type in the order they appear in the Inspector/array.
-				Component[] components = _conditionSource.GetComponents(componentType);
+				var components = _conditionSource.GetComponents(componentType);
 
 				if (componentIndex < 0 || componentIndex >= components.Length)
 				{
@@ -66,10 +66,10 @@ namespace NL.XRLab.Toolkit.Greybox.Extensions.Events
 				}
 
 				// The specific, unique component instance is found by index!
-				Component targetComponent = components[componentIndex];
+				var targetComponent = components[componentIndex];
 
 				// 4. Get the MethodInfo
-				MethodInfo methodInfo = targetComponent.GetType().GetMethod(
+				var methodInfo = targetComponent.GetType().GetMethod(
 					methodName,
 					BindingFlags.Public | BindingFlags.Instance,
 					null,
@@ -110,6 +110,7 @@ namespace NL.XRLab.Toolkit.Greybox.Extensions.Events
 			}
 
 			// FAST: Invoke the cached delegate
+			Debug.Log("Checking if condition is met: " + _methodName);
 			return _cachedCondition();
 		}
 	}

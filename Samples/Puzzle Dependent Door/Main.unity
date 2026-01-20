@@ -185,7 +185,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 80
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!114 &112243758
 MonoBehaviour:
@@ -201,8 +201,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: XRLab.Toolkit.Greybox::NL.XRLab.Toolkit.Greybox.Interactions.RaycastInteractor
   _interactionLayerMask:
     serializedVersion: 2
-    m_Bits: 0
-  _maxInteractionDistance: 5
+    m_Bits: 8
+  _interactionOrigin: {fileID: 1834302487}
+  _maxInteractionDistance: 2
   _drawDebugRay: 1
 --- !u!114 &112243759
 MonoBehaviour:
@@ -295,7 +296,20 @@ MonoBehaviour:
     m_ActionId: 6c2ab1b8-8984-453a-af3d-a3c78ae1679a
     m_ActionName: 'Player/Attack[/Mouse/leftButton,/Keyboard/enter]'
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 112243759}
+        m_TargetAssemblyTypeName: NL.XRLab.Toolkit.Greybox.Samples.Scripts.FirstPersonPlayerController,
+          XRLab.Toolkit.Greybox.Samples
+        m_MethodName: OnInteractInputAction
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 852140f2-7766-474d-8707-702459ba45f3
     m_ActionName: 'Player/Interact[/Keyboard/e]'
   - m_PersistentCalls:
@@ -543,12 +557,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5032301697762114232, guid: d705f6a9291d27b47823556d44448263, type: 3}
       propertyPath: _gameplayModules.Array.size
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5032301697762114232, guid: d705f6a9291d27b47823556d44448263, type: 3}
       propertyPath: '_gameplayModules.Array.data[0]'
       value: 
       objectReference: {fileID: 11400000, guid: c31da4839685b40b68a7b86481cc4a9f, type: 2}
+    - target: {fileID: 5032301697762114232, guid: d705f6a9291d27b47823556d44448263, type: 3}
+      propertyPath: '_gameplayModules.Array.data[1]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 369379425167ecb45b478c1ff8a38204, type: 2}
+    - target: {fileID: 5032301697762114232, guid: d705f6a9291d27b47823556d44448263, type: 3}
+      propertyPath: '_gameplayModules.Array.data[2]'
+      value: 
+      objectReference: {fileID: 11400000, guid: bbe8b0fae04ba2f4b8eb170936c5649e, type: 2}
     - target: {fileID: 5032301697762114232, guid: d705f6a9291d27b47823556d44448263, type: 3}
       propertyPath: _startingModule.GameplayModuleData
       value: 
@@ -826,67 +848,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!1001 &413000774895915807
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 999657304919342218, guid: 6a98e088d80233b409a8d94a11ca574a, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 999657304919342218, guid: 6a98e088d80233b409a8d94a11ca574a, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 999657304919342218, guid: 6a98e088d80233b409a8d94a11ca574a, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 999657304919342218, guid: 6a98e088d80233b409a8d94a11ca574a, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 999657304919342218, guid: 6a98e088d80233b409a8d94a11ca574a, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 999657304919342218, guid: 6a98e088d80233b409a8d94a11ca574a, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 999657304919342218, guid: 6a98e088d80233b409a8d94a11ca574a, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 999657304919342218, guid: 6a98e088d80233b409a8d94a11ca574a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 999657304919342218, guid: 6a98e088d80233b409a8d94a11ca574a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 999657304919342218, guid: 6a98e088d80233b409a8d94a11ca574a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1663225611052710821, guid: 6a98e088d80233b409a8d94a11ca574a, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
-      objectReference: {fileID: 2100000, guid: c95dab6118865f846837a5b62ec9e771, type: 2}
-    - target: {fileID: 2620808553145538614, guid: 6a98e088d80233b409a8d94a11ca574a, type: 3}
-      propertyPath: m_Name
-      value: Plane
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 6a98e088d80233b409a8d94a11ca574a, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -894,4 +855,3 @@ SceneRoots:
   - {fileID: 769037112}
   - {fileID: 1423278805}
   - {fileID: 112243755}
-  - {fileID: 413000774895915807}

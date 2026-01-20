@@ -12,21 +12,25 @@ namespace NL.XRLab.Toolkit.Greybox.GameplayModules
 
 		public UnityEvent<GameplayModule> OnModuleCompleted = new();
 
+		[SerializeField] private bool _autoStart = true;
+
 
 		private void Awake()
 		{
 			GameplaySequence.CacheConditionDelegates();
 			GameplaySequence.OnSequenceFinished.AddListener(CompleteModule);
+			GameplaySequence.BelongingModule = this;
 		}
 
 		private void Start()
 		{
-			StartSequence();
+			if (_autoStart)
+				StartSequence();
 		}
 
 		private void StartSequence()
 		{
-			if (GameplaySequence.Events.Count == 0)
+			if (!GameplaySequence.HasEventLeft)
 			{
 				Logger.LogWarning(
 					$"Tried to start GameplaySequence for {GameplayModuleData.name}, but it has no events. Completing module immediately.");
@@ -34,7 +38,7 @@ namespace NL.XRLab.Toolkit.Greybox.GameplayModules
 				return;
 			}
 
-			GameplaySequence.TryInvokeNextEvent();
+			GameplaySequence.TryInvokeCurrentEvent();
 		}
 
 		private void CompleteModule()

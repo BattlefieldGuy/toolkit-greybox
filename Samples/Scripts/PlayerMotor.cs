@@ -32,7 +32,7 @@ namespace NL.XRLab.Toolkit.Greybox.Samples.Scripts
 			var move =
 				transform.right * _direction.x +
 				transform.forward * _direction.y;
-			move.y = _rigidbody.linearVelocity.y;
+			move.y = 0;
 
 			_rigidbody.linearVelocity = move.normalized * _torque;
 		}
