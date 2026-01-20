@@ -24,6 +24,7 @@ namespace NL.XRLab.Toolkit.Greybox.Samples.Scripts
 
 		public UnityEvent<Vector2> OnMove { get; } = new();
 		public UnityEvent<Vector2> OnLook { get; } = new();
+		public UnityEvent OnInteract { get; } = new();
 
 		private void Start()
 		{
@@ -45,6 +46,12 @@ namespace NL.XRLab.Toolkit.Greybox.Samples.Scripts
 		{
 			var input = context.ReadValue<Vector2>();
 			OnLook.Invoke(input * LookSensitivity);
+		}
+
+		public void OnInteractInputAction(InputAction.CallbackContext context)
+		{
+			if (!context.started) return;
+			OnInteract.Invoke();
 		}
 	}
 }

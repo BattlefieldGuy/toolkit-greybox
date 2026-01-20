@@ -44,12 +44,13 @@ namespace NL.XRLab.Toolkit.Greybox.Samples.Scripts
 			{
 				Controller.OnMove.RemoveListener(Motor.UpdateMoveDirection);
 				Controller.OnLook.RemoveListener(Orientator.OnLook);
+				Controller.OnInteract.RemoveListener(Interactor.AttemptInteract);
 				return;
 			}
 
-			// Subscribe to movement input
 			Controller.OnMove.AddListener(Motor.UpdateMoveDirection);
 			Controller.OnLook.AddListener(Orientator.OnLook);
+			Controller.OnInteract.AddListener(Interactor.AttemptInteract);
 		}
 	}
 }

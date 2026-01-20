@@ -4,6 +4,7 @@ namespace NL.XRLab.Toolkit.Greybox.Interactions
 {
 	public class RaycastInteractor : Interactor
 	{
+		[SerializeField] private Transform _interactionOrigin;
 		[SerializeField] private float _maxInteractionDistance = 5f;
 
 #if UNITY_EDITOR
@@ -14,19 +15,22 @@ namespace NL.XRLab.Toolkit.Greybox.Interactions
 		{
 #if UNITY_EDITOR
 			if (_drawDebugRay)
-				Debug.DrawRay(transform.position, transform.forward * _maxInteractionDistance, Color.yellow, 1f);
+				Debug.DrawRay(_interactionOrigin.position, _interactionOrigin.forward * _maxInteractionDistance,
+					Color.yellow, 1f);
 #endif
 			if (!Physics.Raycast(
-				    transform.position, transform.forward, out var hit, _maxInteractionDistance, _interactionLayerMask)
+				    _interactionOrigin.position, _interactionOrigin.forward, out var hit, _maxInteractionDistance,
+				    _interactionLayerMask)
 			   )
 				return;
 
 #if UNITY_EDITOR
 			if (_drawDebugRay)
-				Debug.DrawRay(transform.position, transform.forward * hit.distance, Color.green, 1f);
+				Debug.DrawRay(_interactionOrigin.position, _interactionOrigin.forward * hit.distance, Color.green, 1f);
 #endif
 
 			var interactable = hit.collider.GetComponent<IInteractable>();
+			Debug.Log($"Found: {interactable}");
 			if (interactable != null)
 				Interact(interactable);
 		}
