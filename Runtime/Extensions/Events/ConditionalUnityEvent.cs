@@ -12,7 +12,8 @@ namespace NL.XRLab.Toolkit.Greybox.Extensions.Events
 		[SerializeField] private List<SerializableCondition> _conditions = new();
 
 		// The event to be invoked
-		[SerializeField] private UnityEvent _unityEvent;
+		[SerializeField] private UnityEvent _onConditionsAreMet;
+		[SerializeField] private UnityEvent _onConditionsAreNotMet;
 
 		/// <summary>
 		///    Initializes all SerializableConditions within this event, building the delegate cache.
@@ -20,7 +21,7 @@ namespace NL.XRLab.Toolkit.Greybox.Extensions.Events
 		/// </summary>
 		public void CacheConditionDelegates()
 		{
-			foreach (var condition in _conditions) condition.CacheConditionDelegate();
+			foreach (SerializableCondition condition in _conditions) condition.CacheConditionDelegate();
 		}
 
 		/// <summary>
@@ -28,7 +29,7 @@ namespace NL.XRLab.Toolkit.Greybox.Extensions.Events
 		/// </summary>
 		private bool ConditionsAreMet()
 		{
-			foreach (var condition in _conditions)
+			foreach (SerializableCondition condition in _conditions)
 				// Stop and return false as soon as one condition is not met
 				if (!condition.IsMet())
 					return false;
@@ -42,8 +43,13 @@ namespace NL.XRLab.Toolkit.Greybox.Extensions.Events
 		/// </summary>
 		public bool TryInvoke()
 		{
-			if (!ConditionsAreMet()) return false;
-			_unityEvent.Invoke();
+			if (!ConditionsAreMet())
+			{
+				_onConditionsAreNotMet.Invoke();
+				return false;
+			}
+
+			_onConditionsAreMet.Invoke();
 			return true;
 		}
 	}
