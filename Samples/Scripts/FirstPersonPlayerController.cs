@@ -25,6 +25,7 @@ namespace NL.XRLab.Toolkit.Greybox.Samples.Scripts
 		public UnityEvent<Vector2> OnMove { get; } = new();
 		public UnityEvent<Vector2> OnLook { get; } = new();
 		public UnityEvent OnInteract { get; } = new();
+		public UnityEvent OnToggleCursorLock { get; } = new();
 
 		private void Start()
 		{
@@ -40,6 +41,12 @@ namespace NL.XRLab.Toolkit.Greybox.Samples.Scripts
 		{
 			var input = _moveAction.ReadValue<Vector2>();
 			OnMove.Invoke(input);
+		}
+
+		public void OnToggleCursorLockAction(InputAction.CallbackContext context)
+		{
+			if (!context.started) return;
+			OnToggleCursorLock.Invoke();
 		}
 
 		public void OnLookInputAction(InputAction.CallbackContext context)
