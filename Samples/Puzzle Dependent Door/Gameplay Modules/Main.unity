@@ -372,6 +372,23 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 9caa3d8a-6b2f-4e8e-8bad-6ede561bd9be
     m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 112243759}
+        m_TargetAssemblyTypeName: NL.XRLab.Toolkit.Greybox.Samples.Scripts.FirstPersonPlayerController,
+          XRLab.Toolkit.Greybox.Samples
+        m_MethodName: OnToggleCursorLockAction
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 01fc676d-f9ed-4503-9590-06fef25d7a4e
+    m_ActionName: 'Player/ToggleCursorLock[/Keyboard/escape]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -389,6 +406,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ae13eb880a42544980042d155782b17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: XRLab.Toolkit.Greybox.Samples::NL.XRLab.Toolkit.Greybox.Samples.Scripts.FirstPersonPlayer
+  _startCursorLocked: 1
 --- !u!114 &112243763
 MonoBehaviour:
   m_ObjectHideFlags: 0

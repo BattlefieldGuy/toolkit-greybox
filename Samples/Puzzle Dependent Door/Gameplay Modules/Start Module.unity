@@ -185,6 +185,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 395934010947314269, guid: ee0810d249aad3e41aec704a130d7eae, type: 3}
+      propertyPath: _autoStart
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 395934010947314269, guid: ee0810d249aad3e41aec704a130d7eae, type: 3}
       propertyPath: GameplayModuleData
       value: 
       objectReference: {fileID: 11400000, guid: c31da4839685b40b68a7b86481cc4a9f, type: 2}

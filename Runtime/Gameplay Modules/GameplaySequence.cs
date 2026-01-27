@@ -34,7 +34,7 @@ namespace NL.XRLab.Toolkit.Greybox.GameplayModules
 		{
 			Logger.Log(
 				$"Trying to invoke current event in GameplaySequence for {BelongingModule.GameplayModuleData.name}. (Total events: {Events.Count}, Current index: {_currentEventIndex})");
-			if (!AttemptCompleteSequence()) return;
+			if (AttemptCompleteSequence()) return;
 
 			if (!CurrentEvent.TryInvoke())
 			{

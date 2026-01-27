@@ -13,6 +13,9 @@ namespace NL.XRLab.Toolkit.Greybox.GameplayModules
 		public UnityEvent<GameplayModule> OnModuleCompleted = new();
 
 		[SerializeField] private bool _autoStart = true;
+		[SerializeField] private bool _disableModuleOnComplete = true;
+
+		private readonly bool _isCompleted = false;
 
 
 		private void Awake()
@@ -30,6 +33,8 @@ namespace NL.XRLab.Toolkit.Greybox.GameplayModules
 
 		private void StartSequence()
 		{
+			if (!isActiveAndEnabled)
+				return;
 			if (!GameplaySequence.HasEventLeft)
 			{
 				Logger.LogWarning(
@@ -44,16 +49,22 @@ namespace NL.XRLab.Toolkit.Greybox.GameplayModules
 
 		public void TryInvokeCurrentEventInSequence()
 		{
+			if (!isActiveAndEnabled)
+				return;
 			GameplaySequence.TryInvokeCurrentEvent();
 		}
 
 		public void TryInvokeEventInSequence(int eventIndex)
 		{
+			if (!isActiveAndEnabled)
+				return;
 			GameplaySequence.TryInvokeEvent(eventIndex, false);
 		}
 
 		public void TryInvokeEventInSequenceUnlessPassed(int eventIndex)
 		{
+			if (!isActiveAndEnabled)
+				return;
 			GameplaySequence.TryInvokeEvent(eventIndex, true);
 		}
 
@@ -61,6 +72,8 @@ namespace NL.XRLab.Toolkit.Greybox.GameplayModules
 		{
 			Logger.Log("GameplayModule completed: " + GameplayModuleData.name);
 			OnModuleCompleted?.Invoke(this);
+			if (_disableModuleOnComplete)
+				gameObject.SetActive(false);
 		}
 	}
 }
