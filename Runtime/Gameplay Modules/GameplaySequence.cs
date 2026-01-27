@@ -26,7 +26,7 @@ namespace NL.XRLab.Toolkit.Greybox.GameplayModules
 
 		public void CacheConditionDelegates()
 		{
-			foreach (var conditionalEvent in _events)
+			foreach (ConditionalUnityEvent conditionalEvent in _events)
 				conditionalEvent.CacheConditionDelegates();
 		}
 
@@ -34,11 +34,7 @@ namespace NL.XRLab.Toolkit.Greybox.GameplayModules
 		{
 			Logger.Log(
 				$"Trying to invoke current event in GameplaySequence for {BelongingModule.GameplayModuleData.name}. (Total events: {Events.Count}, Current index: {_currentEventIndex})");
-			if (!HasEventLeft)
-			{
-				CompleteSequence();
-				return;
-			}
+			if (!AttemptCompleteSequence()) return;
 
 			if (!CurrentEvent.TryInvoke())
 			{
@@ -46,20 +42,54 @@ namespace NL.XRLab.Toolkit.Greybox.GameplayModules
 				return;
 			}
 
-			CompleteEvent();
+			CompleteCurrentEvent();
 		}
 
-		private void CompleteEvent()
+		private void CompleteCurrentEvent()
+		{
+			MoveToNextEvent();
+			AttemptCompleteSequence();
+		}
+
+		private void MoveToNextEvent()
 		{
 			_currentEventIndex++;
-			if (!HasEventLeft)
-				CompleteSequence();
 		}
+
+		private bool AttemptCompleteSequence()
+		{
+			if (HasEventLeft)
+				return false;
+			CompleteSequence();
+			return true;
+		}
+
 
 		private void CompleteSequence()
 		{
 			Logger.Log($"GameplaySequence completed for {BelongingModule.GameplayModuleData.name}.");
 			OnSequenceFinished.Invoke();
+		}
+
+		public void TryInvokeEvent(int eventIndex, bool ignoreIfPassedIndex)
+		{
+			if (eventIndex == _currentEventIndex)
+			{
+				TryInvokeCurrentEvent();
+				return;
+			}
+
+			if (eventIndex < _currentEventIndex && ignoreIfPassedIndex)
+				return;
+			if (eventIndex >= Events.Count)
+			{
+				Logger.LogWarning(
+					$"Tried to invoke event at index {eventIndex} in GameplaySequence for {BelongingModule.GameplayModuleData.name}, but index is out of range.");
+				return;
+			}
+
+			ConditionalUnityEvent eventToInvoke = Events[eventIndex];
+			if (!eventToInvoke.TryInvoke()) Logger.Log("TryInvokeEvent: Conditions for event not met.");
 		}
 	}
 }

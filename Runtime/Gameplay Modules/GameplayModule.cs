@@ -41,6 +41,22 @@ namespace NL.XRLab.Toolkit.Greybox.GameplayModules
 			GameplaySequence.TryInvokeCurrentEvent();
 		}
 
+
+		public void TryInvokeCurrentEventInSequence()
+		{
+			GameplaySequence.TryInvokeCurrentEvent();
+		}
+
+		public void TryInvokeEventInSequence(int eventIndex)
+		{
+			GameplaySequence.TryInvokeEvent(eventIndex, false);
+		}
+
+		public void TryInvokeEventInSequenceUnlessPassed(int eventIndex)
+		{
+			GameplaySequence.TryInvokeEvent(eventIndex, true);
+		}
+
 		private void CompleteModule()
 		{
 			Logger.Log("GameplayModule completed: " + GameplayModuleData.name);
