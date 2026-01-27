@@ -8,7 +8,7 @@ using Logger = NL.XRLab.Toolkit.Greybox.Utils.Logger;
 namespace NL.XRLab.Toolkit.Greybox.GameplayModules
 {
 	[Serializable]
-	public class GameplaySequence
+	public class GameplaySequenceLinear
 	{
 		[SerializeField] private List<ConditionalUnityEvent> _events = new();
 

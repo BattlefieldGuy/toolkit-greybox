@@ -8,7 +8,7 @@ namespace NL.XRLab.Toolkit.Greybox.GameplayModules
 	{
 		[SerializeField] public GameplayModuleData GameplayModuleData;
 
-		public GameplaySequence GameplaySequence;
+		public GameplaySequenceLinear gameplaySequenceLinear;
 
 		public UnityEvent<GameplayModule> OnModuleCompleted = new();
 
@@ -20,9 +20,9 @@ namespace NL.XRLab.Toolkit.Greybox.GameplayModules
 
 		private void Awake()
 		{
-			GameplaySequence.CacheConditionDelegates();
-			GameplaySequence.OnSequenceFinished.AddListener(CompleteModule);
-			GameplaySequence.BelongingModule = this;
+			gameplaySequenceLinear.CacheConditionDelegates();
+			gameplaySequenceLinear.OnSequenceFinished.AddListener(CompleteModule);
+			gameplaySequenceLinear.BelongingModule = this;
 		}
 
 		private void Start()
@@ -35,7 +35,7 @@ namespace NL.XRLab.Toolkit.Greybox.GameplayModules
 		{
 			if (!isActiveAndEnabled)
 				return;
-			if (!GameplaySequence.HasEventLeft)
+			if (!gameplaySequenceLinear.HasEventLeft)
 			{
 				Logger.LogWarning(
 					$"Tried to start GameplaySequence for {GameplayModuleData.name}, but it has no events. Completing module immediately.");
@@ -43,7 +43,7 @@ namespace NL.XRLab.Toolkit.Greybox.GameplayModules
 				return;
 			}
 
-			GameplaySequence.TryInvokeCurrentEvent();
+			gameplaySequenceLinear.TryInvokeCurrentEvent();
 		}
 
 
@@ -51,21 +51,21 @@ namespace NL.XRLab.Toolkit.Greybox.GameplayModules
 		{
 			if (!isActiveAndEnabled)
 				return;
-			GameplaySequence.TryInvokeCurrentEvent();
+			gameplaySequenceLinear.TryInvokeCurrentEvent();
 		}
 
 		public void TryInvokeEventInSequence(int eventIndex)
 		{
 			if (!isActiveAndEnabled)
 				return;
-			GameplaySequence.TryInvokeEvent(eventIndex, false);
+			gameplaySequenceLinear.TryInvokeEvent(eventIndex, false);
 		}
 
 		public void TryInvokeEventInSequenceUnlessPassed(int eventIndex)
 		{
 			if (!isActiveAndEnabled)
 				return;
-			GameplaySequence.TryInvokeEvent(eventIndex, true);
+			gameplaySequenceLinear.TryInvokeEvent(eventIndex, true);
 		}
 
 		private void CompleteModule()
