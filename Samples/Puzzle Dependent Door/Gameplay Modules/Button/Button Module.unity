@@ -141,7 +141,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7286688147611514152, guid: 6ffd8a46fc89eda419518dd21d34f168, type: 3}
       propertyPath: _onPress.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7286688147611514152, guid: 6ffd8a46fc89eda419518dd21d34f168, type: 3}
       propertyPath: _onPress.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
@@ -165,7 +165,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7286688147611514152, guid: 6ffd8a46fc89eda419518dd21d34f168, type: 3}
       propertyPath: _onPress.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: TryInvokeEventInSequenceUnlessPassed
+      value: TryInvokeGameplayEvent
       objectReference: {fileID: 0}
     - target: {fileID: 7286688147611514152, guid: 6ffd8a46fc89eda419518dd21d34f168, type: 3}
       propertyPath: _onPress.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
@@ -180,8 +180,12 @@ PrefabInstance:
       value: NL.XRLab.Toolkit.Greybox.GameplayModules.GameplayModule, XRLab.Toolkit.Greybox
       objectReference: {fileID: 0}
     - target: {fileID: 7286688147611514152, guid: 6ffd8a46fc89eda419518dd21d34f168, type: 3}
+      propertyPath: _onPress.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 11400000, guid: 82e727c3fad11a844a43d63ff5c2985c, type: 2}
+    - target: {fileID: 7286688147611514152, guid: 6ffd8a46fc89eda419518dd21d34f168, type: 3}
       propertyPath: _onPress.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
+      value: NL.XRLab.Toolkit.Greybox.Gameplay_Modules.GameplayEventIdentifier, XRLab.Toolkit.Greybox
       objectReference: {fileID: 0}
     - target: {fileID: 7286688147611514152, guid: 6ffd8a46fc89eda419518dd21d34f168, type: 3}
       propertyPath: _onPress.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -265,6 +269,50 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 395934010947314269, guid: ee0810d249aad3e41aec704a130d7eae, type: 3}
+      propertyPath: gameplaySequenceMapped.Map.keys.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 395934010947314269, guid: ee0810d249aad3e41aec704a130d7eae, type: 3}
+      propertyPath: gameplaySequenceMapped.Map.values.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 395934010947314269, guid: ee0810d249aad3e41aec704a130d7eae, type: 3}
+      propertyPath: gameplaySequenceMapped.Map._contents.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 395934010947314269, guid: ee0810d249aad3e41aec704a130d7eae, type: 3}
+      propertyPath: 'gameplaySequenceMapped.Map.values.Array.data[0]'
+      value: asdfg
+      objectReference: {fileID: 0}
+    - target: {fileID: 395934010947314269, guid: ee0810d249aad3e41aec704a130d7eae, type: 3}
+      propertyPath: gameplaySequenceMapped._map._contents.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 395934010947314269, guid: ee0810d249aad3e41aec704a130d7eae, type: 3}
+      propertyPath: gameplaySequenceMapped.Map._contents.Array.data[0].Key
+      value: 
+      objectReference: {fileID: 11400000, guid: 329889f7ce086354caa2d2405700c29e, type: 2}
+    - target: {fileID: 395934010947314269, guid: ee0810d249aad3e41aec704a130d7eae, type: 3}
+      propertyPath: gameplaySequenceMapped.Map._contents.Array.data[1].Key
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 395934010947314269, guid: ee0810d249aad3e41aec704a130d7eae, type: 3}
+      propertyPath: gameplaySequenceMapped._map._contents.Array.data[0].Key
+      value: 
+      objectReference: {fileID: 11400000, guid: 82e727c3fad11a844a43d63ff5c2985c, type: 2}
+    - target: {fileID: 395934010947314269, guid: ee0810d249aad3e41aec704a130d7eae, type: 3}
+      propertyPath: gameplaySequenceMapped._map._contents.Array.data[1].Key
+      value: 
+      objectReference: {fileID: 11400000, guid: 329889f7ce086354caa2d2405700c29e, type: 2}
+    - target: {fileID: 395934010947314269, guid: ee0810d249aad3e41aec704a130d7eae, type: 3}
+      propertyPath: gameplaySequenceMapped.Map._contents.Array.data[0].Value
+      value: asdfsdfaasdfasdf
+      objectReference: {fileID: 0}
+    - target: {fileID: 395934010947314269, guid: ee0810d249aad3e41aec704a130d7eae, type: 3}
+      propertyPath: gameplaySequenceMapped.Map._contents.Array.data[1].Value
+      value: asdfsdfaasdfasdf
+      objectReference: {fileID: 0}
+    - target: {fileID: 395934010947314269, guid: ee0810d249aad3e41aec704a130d7eae, type: 3}
       propertyPath: GameplaySequence._events.Array.data[0]._conditions.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -285,6 +333,14 @@ PrefabInstance:
       value: NL.XRLab.Toolkit.Greybox.Interactions.Buttons.PushableButton|0|IsPressed
       objectReference: {fileID: 0}
     - target: {fileID: 395934010947314269, guid: ee0810d249aad3e41aec704a130d7eae, type: 3}
+      propertyPath: gameplaySequenceMapped._map._contents.Array.data[0].Value._conditions.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 395934010947314269, guid: ee0810d249aad3e41aec704a130d7eae, type: 3}
+      propertyPath: gameplaySequenceMapped._map._contents.Array.data[1].Value._conditions.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 395934010947314269, guid: ee0810d249aad3e41aec704a130d7eae, type: 3}
       propertyPath: GameplaySequence._events.Array.data[0]._conditions.Array.data[0]._conditionSource
       value: 
       objectReference: {fileID: 588514682}
@@ -301,6 +357,14 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 395934010947314269, guid: ee0810d249aad3e41aec704a130d7eae, type: 3}
+      propertyPath: gameplaySequenceMapped._map._contents.Array.data[0].Value._conditions.Array.data[0]._methodName
+      value: NL.XRLab.Toolkit.Greybox.Interactions.Buttons.PushableButton|0|IsPressed
+      objectReference: {fileID: 0}
+    - target: {fileID: 395934010947314269, guid: ee0810d249aad3e41aec704a130d7eae, type: 3}
+      propertyPath: gameplaySequenceMapped._map._contents.Array.data[1].Value._conditions.Array.data[0]._methodName
+      value: NL.XRLab.Toolkit.Greybox.Interactions.Buttons.PushableButton|0|IsPressed
+      objectReference: {fileID: 0}
+    - target: {fileID: 395934010947314269, guid: ee0810d249aad3e41aec704a130d7eae, type: 3}
       propertyPath: GameplaySequence._events.Array.data[0]._unityEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 1
       objectReference: {fileID: 0}
@@ -308,6 +372,14 @@ PrefabInstance:
       propertyPath: GameplaySequence._events.Array.data[0]._unityEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 2208237156442405803}
+    - target: {fileID: 395934010947314269, guid: ee0810d249aad3e41aec704a130d7eae, type: 3}
+      propertyPath: gameplaySequenceMapped._map._contents.Array.data[0].Value._conditions.Array.data[0]._conditionSource
+      value: 
+      objectReference: {fileID: 588514682}
+    - target: {fileID: 395934010947314269, guid: ee0810d249aad3e41aec704a130d7eae, type: 3}
+      propertyPath: gameplaySequenceMapped._map._contents.Array.data[1].Value._conditions.Array.data[0]._conditionSource
+      value: 
+      objectReference: {fileID: 1638595255}
     - target: {fileID: 395934010947314269, guid: ee0810d249aad3e41aec704a130d7eae, type: 3}
       propertyPath: GameplaySequence._events.Array.data[0]._unityEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -317,11 +389,67 @@ PrefabInstance:
       value: ToggleOpen
       objectReference: {fileID: 0}
     - target: {fileID: 395934010947314269, guid: ee0810d249aad3e41aec704a130d7eae, type: 3}
+      propertyPath: gameplaySequenceMapped._map._contents.Array.data[0].Value._onConditionsAreMet.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 395934010947314269, guid: ee0810d249aad3e41aec704a130d7eae, type: 3}
+      propertyPath: gameplaySequenceMapped._map._contents.Array.data[1].Value._onConditionsAreMet.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 395934010947314269, guid: ee0810d249aad3e41aec704a130d7eae, type: 3}
       propertyPath: GameplaySequence._events.Array.data[0]._unityEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: NL.XRLab.Toolkit.Greybox.Interactions.Door, XRLab.Toolkit.Greybox
       objectReference: {fileID: 0}
     - target: {fileID: 395934010947314269, guid: ee0810d249aad3e41aec704a130d7eae, type: 3}
+      propertyPath: gameplaySequenceMapped._map._contents.Array.data[0].Value._onConditionsAreMet.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 395934010947314269, guid: ee0810d249aad3e41aec704a130d7eae, type: 3}
+      propertyPath: gameplaySequenceMapped._map._contents.Array.data[1].Value._onConditionsAreMet.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 395934010947314269, guid: ee0810d249aad3e41aec704a130d7eae, type: 3}
+      propertyPath: gameplaySequenceMapped._map._contents.Array.data[0].Value._onConditionsAreMet.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2208237156442405803}
+    - target: {fileID: 395934010947314269, guid: ee0810d249aad3e41aec704a130d7eae, type: 3}
+      propertyPath: gameplaySequenceMapped._map._contents.Array.data[1].Value._onConditionsAreMet.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 386481705}
+    - target: {fileID: 395934010947314269, guid: ee0810d249aad3e41aec704a130d7eae, type: 3}
+      propertyPath: gameplaySequenceMapped._map._contents.Array.data[0].Value._onConditionsAreMet.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 395934010947314269, guid: ee0810d249aad3e41aec704a130d7eae, type: 3}
+      propertyPath: gameplaySequenceMapped._map._contents.Array.data[1].Value._onConditionsAreMet.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 395934010947314269, guid: ee0810d249aad3e41aec704a130d7eae, type: 3}
+      propertyPath: gameplaySequenceMapped._map._contents.Array.data[0].Value._onConditionsAreMet.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ToggleOpen
+      objectReference: {fileID: 0}
+    - target: {fileID: 395934010947314269, guid: ee0810d249aad3e41aec704a130d7eae, type: 3}
+      propertyPath: gameplaySequenceMapped._map._contents.Array.data[1].Value._onConditionsAreMet.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: CompleteModule
+      objectReference: {fileID: 0}
+    - target: {fileID: 395934010947314269, guid: ee0810d249aad3e41aec704a130d7eae, type: 3}
       propertyPath: GameplaySequence._events.Array.data[0]._unityEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 395934010947314269, guid: ee0810d249aad3e41aec704a130d7eae, type: 3}
+      propertyPath: gameplaySequenceMapped._map._contents.Array.data[0].Value._onConditionsAreMet.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: NL.XRLab.Toolkit.Greybox.Interactions.Door, XRLab.Toolkit.Greybox
+      objectReference: {fileID: 0}
+    - target: {fileID: 395934010947314269, guid: ee0810d249aad3e41aec704a130d7eae, type: 3}
+      propertyPath: gameplaySequenceMapped._map._contents.Array.data[1].Value._onConditionsAreMet.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: NL.XRLab.Toolkit.Greybox.GameplayModules.GameplayModule, XRLab.Toolkit.Greybox
+      objectReference: {fileID: 0}
+    - target: {fileID: 395934010947314269, guid: ee0810d249aad3e41aec704a130d7eae, type: 3}
+      propertyPath: gameplaySequenceMapped._map._contents.Array.data[0].Value._onConditionsAreMet.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 395934010947314269, guid: ee0810d249aad3e41aec704a130d7eae, type: 3}
+      propertyPath: gameplaySequenceMapped._map._contents.Array.data[1].Value._onConditionsAreMet.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 3403694063724489314, guid: ee0810d249aad3e41aec704a130d7eae, type: 3}
@@ -736,6 +864,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: XRLab.Toolkit.Greybox.Samples::NL.XRLab.Toolkit.Greybox.Samples.Samples.PuzzleDependentDoor.Scripts.FinishModuleArea
   _gameplayModule: {fileID: 386481705}
+  _eventToTryInvoke: {fileID: 11400000, guid: 329889f7ce086354caa2d2405700c29e, type: 2}
 --- !u!65 &1447757341
 BoxCollider:
   m_ObjectHideFlags: 0

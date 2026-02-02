@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Button Module
   m_EditorClassIdentifier: XRLab.Toolkit.Greybox::GameplayModuleData
   _scenePath: Packages/nl.xr-lab.toolkit-greybox/Samples/Puzzle Dependent Door/Gameplay
-    Modules/Button Module.unity
+    Modules/Button/Button Module.unity
   ConnectedModules:
   - GameplayModuleData: {fileID: 11400000, guid: bbe8b0fae04ba2f4b8eb170936c5649e, type: 2}
     LoadModuleMode: 0

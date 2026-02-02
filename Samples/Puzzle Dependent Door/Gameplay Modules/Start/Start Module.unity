@@ -197,6 +197,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 395934010947314269, guid: ee0810d249aad3e41aec704a130d7eae, type: 3}
+      propertyPath: gameplaySequenceMapped._map._contents.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 395934010947314269, guid: ee0810d249aad3e41aec704a130d7eae, type: 3}
+      propertyPath: gameplaySequenceMapped._map._contents.Array.data[0].Key
+      value: 
+      objectReference: {fileID: 11400000, guid: b3a922ace7e40e24baacb04910d2ccc2, type: 2}
+    - target: {fileID: 395934010947314269, guid: ee0810d249aad3e41aec704a130d7eae, type: 3}
       propertyPath: GameplaySequence._events.Array.data[0]._unityEvent.m_PersistentCalls.m_Calls.Array.size
       value: 0
       objectReference: {fileID: 0}
@@ -207,6 +215,34 @@ PrefabInstance:
     - target: {fileID: 395934010947314269, guid: ee0810d249aad3e41aec704a130d7eae, type: 3}
       propertyPath: GameplaySequence._events.Array.data[0]._unityEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 395934010947314269, guid: ee0810d249aad3e41aec704a130d7eae, type: 3}
+      propertyPath: gameplaySequenceMapped._map._contents.Array.data[0].Value._onConditionsAreMet.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 395934010947314269, guid: ee0810d249aad3e41aec704a130d7eae, type: 3}
+      propertyPath: gameplaySequenceMapped._map._contents.Array.data[0].Value._onConditionsAreMet.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 395934010947314269, guid: ee0810d249aad3e41aec704a130d7eae, type: 3}
+      propertyPath: gameplaySequenceMapped._map._contents.Array.data[0].Value._onConditionsAreMet.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 386481705}
+    - target: {fileID: 395934010947314269, guid: ee0810d249aad3e41aec704a130d7eae, type: 3}
+      propertyPath: gameplaySequenceMapped._map._contents.Array.data[0].Value._onConditionsAreMet.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 395934010947314269, guid: ee0810d249aad3e41aec704a130d7eae, type: 3}
+      propertyPath: gameplaySequenceMapped._map._contents.Array.data[0].Value._onConditionsAreMet.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: CompleteModule
+      objectReference: {fileID: 0}
+    - target: {fileID: 395934010947314269, guid: ee0810d249aad3e41aec704a130d7eae, type: 3}
+      propertyPath: gameplaySequenceMapped._map._contents.Array.data[0].Value._onConditionsAreMet.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: NL.XRLab.Toolkit.Greybox.GameplayModules.GameplayModule, XRLab.Toolkit.Greybox
+      objectReference: {fileID: 0}
+    - target: {fileID: 395934010947314269, guid: ee0810d249aad3e41aec704a130d7eae, type: 3}
+      propertyPath: gameplaySequenceMapped._map._contents.Array.data[0].Value._onConditionsAreMet.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 3403694063724489314, guid: ee0810d249aad3e41aec704a130d7eae, type: 3}
       propertyPath: m_Name
@@ -344,7 +380,7 @@ GameObject:
   - component: {fileID: 1687858325}
   - component: {fileID: 1687858329}
   m_Layer: 0
-  m_Name: Finish Module Area
+  m_Name: Gameplay Event Trigger Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -455,6 +491,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: XRLab.Toolkit.Greybox.Samples::NL.XRLab.Toolkit.Greybox.Samples.Samples.PuzzleDependentDoor.Scripts.FinishModuleArea
   _gameplayModule: {fileID: 386481705}
+  _eventToTryInvoke: {fileID: 11400000, guid: b3a922ace7e40e24baacb04910d2ccc2, type: 2}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

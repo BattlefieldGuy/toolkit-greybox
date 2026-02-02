@@ -1,12 +1,15 @@
+using NL.XRLab.Toolkit.Greybox.Gameplay_Modules;
 using NL.XRLab.Toolkit.Greybox.GameplayModules;
 using UnityEngine;
 
-namespace NL.XRLab.Toolkit.Greybox.Samples.Samples.PuzzleDependentDoor.Scripts
+namespace NL.XRLab.Toolkit.Greybox.Samples.Puzzle_Dependent_Door.Scripts
 {
-	public class FinishModuleArea : MonoBehaviour
+	public class GameplayEventTriggerArea : MonoBehaviour
 	{
 		[SerializeField] private GameplayModule _gameplayModule;
+		[SerializeField] private GameplayEventIdentifier _eventToTryInvoke;
 		private BoxCollider _finishAreaCollider;
+
 
 		private void Awake()
 		{
@@ -16,7 +19,7 @@ namespace NL.XRLab.Toolkit.Greybox.Samples.Samples.PuzzleDependentDoor.Scripts
 		private void OnTriggerEnter(Collider other)
 		{
 			Debug.Log("Trigger enter");
-			_gameplayModule.TryInvokeCurrentEventInSequence();
+			_gameplayModule.TryInvokeGameplayEvent(_eventToTryInvoke);
 		}
 	}
 }

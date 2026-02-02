@@ -1,3 +1,4 @@
+using NL.XRLab.Toolkit.Greybox.Gameplay_Modules;
 using UnityEngine;
 using UnityEngine.Events;
 using Logger = NL.XRLab.Toolkit.Greybox.Utils.Logger;
@@ -8,8 +9,8 @@ namespace NL.XRLab.Toolkit.Greybox.GameplayModules
 	{
 		[SerializeField] public GameplayModuleData GameplayModuleData;
 
-		public GameplaySequenceLinear gameplaySequenceLinear;
-
+		// public GameplaySequenceLinear gameplaySequenceLinear;
+		public GameplaySequenceMapped gameplaySequenceMapped;
 		public UnityEvent<GameplayModule> OnModuleCompleted = new();
 
 		[SerializeField] private bool _autoStart = true;
@@ -20,9 +21,9 @@ namespace NL.XRLab.Toolkit.Greybox.GameplayModules
 
 		private void Awake()
 		{
-			gameplaySequenceLinear.CacheConditionDelegates();
-			gameplaySequenceLinear.OnSequenceFinished.AddListener(CompleteModule);
-			gameplaySequenceLinear.BelongingModule = this;
+			// gameplaySequenceLinear.CacheConditionDelegates();
+			// gameplaySequenceLinear.OnSequenceFinished.AddListener(CompleteModule);
+			// gameplaySequenceLinear.BelongingModule = this;
 		}
 
 		private void Start()
@@ -35,15 +36,22 @@ namespace NL.XRLab.Toolkit.Greybox.GameplayModules
 		{
 			if (!isActiveAndEnabled)
 				return;
-			if (!gameplaySequenceLinear.HasEventLeft)
-			{
-				Logger.LogWarning(
-					$"Tried to start GameplaySequence for {GameplayModuleData.name}, but it has no events. Completing module immediately.");
-				CompleteModule();
-				return;
-			}
+			// if (!gameplaySequenceLinear.HasEventLeft)
+			// {
+			// 	Logger.LogWarning(
+			// 		$"Tried to start GameplaySequence for {GameplayModuleData.name}, but it has no events. Completing module immediately.");
+			// 	CompleteModule();
+			// 	return;
+			// }
+			//
+			// gameplaySequenceLinear.TryInvokeCurrentEvent();
+		}
 
-			gameplaySequenceLinear.TryInvokeCurrentEvent();
+		public void TryInvokeGameplayEvent(GameplayEventIdentifier eventIdentifier)
+		{
+			if (!isActiveAndEnabled)
+				return;
+			gameplaySequenceMapped.TryInvokeEvent(eventIdentifier);
 		}
 
 
@@ -51,24 +59,24 @@ namespace NL.XRLab.Toolkit.Greybox.GameplayModules
 		{
 			if (!isActiveAndEnabled)
 				return;
-			gameplaySequenceLinear.TryInvokeCurrentEvent();
+			// gameplaySequenceLinear.TryInvokeCurrentEvent();
 		}
 
 		public void TryInvokeEventInSequence(int eventIndex)
 		{
 			if (!isActiveAndEnabled)
 				return;
-			gameplaySequenceLinear.TryInvokeEvent(eventIndex, false);
+			// gameplaySequenceLinear.TryInvokeEvent(eventIndex, false);
 		}
 
 		public void TryInvokeEventInSequenceUnlessPassed(int eventIndex)
 		{
 			if (!isActiveAndEnabled)
 				return;
-			gameplaySequenceLinear.TryInvokeEvent(eventIndex, true);
+			// gameplaySequenceLinear.TryInvokeEvent(eventIndex, true);
 		}
 
-		private void CompleteModule()
+		public void CompleteModule()
 		{
 			Logger.Log("GameplayModule completed: " + GameplayModuleData.name);
 			OnModuleCompleted?.Invoke(this);

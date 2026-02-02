@@ -90,7 +90,7 @@ namespace NL.XRLab.Toolkit.Greybox.Editor.Extensions.Events
 			{
 				// 1. Collect all valid bool-returning methods from all MonoBehaviours on the GameObject
 				var validMethods = new List<MethodOption>();
-				MonoBehaviour[] components = sourceGO.GetComponents<MonoBehaviour>();
+				var components = sourceGO.GetComponents<MonoBehaviour>();
 
 				// Dictionaries to track component indices for unique naming and serialization
 				var componentCounts = new Dictionary<Type, int>();
@@ -124,7 +124,7 @@ namespace NL.XRLab.Toolkit.Greybox.Editor.Extensions.Events
 					else
 						uniqueDisplayName = baseName;
 
-					IEnumerable<MethodOption> methods = componentType.GetMethods(BindingFlags.Public | BindingFlags.Instance)
+					var methods = componentType.GetMethods(BindingFlags.Public | BindingFlags.Instance)
 						.Where(m => m.ReturnType == typeof(bool) && m.GetParameters().Length == 0)
 						.Select(m => new MethodOption
 						{
@@ -139,7 +139,7 @@ namespace NL.XRLab.Toolkit.Greybox.Editor.Extensions.Events
 
 				// 2. Prepare the list of choice strings
 				// Use the ParseableKey as the choice name, as it's what gets serialized
-				List<string> choiceKeys = validMethods.Select(m => m.ParseableKey).ToList();
+				var choiceKeys = validMethods.Select(m => m.ParseableKey).ToList();
 				string currentMethodKey = methodNameProp.stringValue;
 
 				// 3. Handle placeholders and current value
@@ -153,7 +153,7 @@ namespace NL.XRLab.Toolkit.Greybox.Editor.Extensions.Events
 				else
 				{
 					// Map the unique key to the user-friendly display name for the dropdown label
-					Dictionary<string, string> keyToDisplayName = validMethods.ToDictionary(
+					var keyToDisplayName = validMethods.ToDictionary(
 						m => m.ParseableKey,
 						m => $"{m.ComponentName}.{m.MethodName}"
 					);
