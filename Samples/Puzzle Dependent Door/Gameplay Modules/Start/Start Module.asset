@@ -12,8 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae1ee1b89deed417b8c92cfde454b606, type: 3}
   m_Name: Start Module
   m_EditorClassIdentifier: XRLab.Toolkit.Greybox::GameplayModuleData
-  _scenePath: Packages/nl.xr-lab.toolkit-greybox/Samples/Puzzle Dependent Door/Gameplay
-    Modules/Start/Start Module.unity
   ConnectedModules:
   - GameplayModuleData: {fileID: 11400000, guid: 369379425167ecb45b478c1ff8a38204, type: 2}
     LoadModuleMode: 0

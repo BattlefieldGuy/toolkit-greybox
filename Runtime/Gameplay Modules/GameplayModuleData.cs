@@ -12,17 +12,11 @@ namespace NL.XRLab.Toolkit.Greybox.GameplayModules
 	public class GameplayModuleData : ScriptableObject
 	{
 		/// <summary>
-		///    The name of the scene associated with this gameplay module.
-		///    Used internally to load the correct scene.
-		/// </summary>
-		[SerializeField] private string _scenePath;
-
-		/// <summary>
 		///    List of modules that are connected to this module.
 		///    (e.g., loaded upon completion of this module)
 		/// </summary>
 		[Tooltip("List of modules that are connected to this module. (e.g., loaded upon completion of this module)")]
-		public List<GameplayModuleDataEntry> ConnectedModules;
+		public List<GameplayModuleDataEntry> ConnectedModules = new();
 
 		/// <summary>
 		///    Whether to unload this module's scene upon completion.
@@ -30,9 +24,9 @@ namespace NL.XRLab.Toolkit.Greybox.GameplayModules
 		public bool UnloadSceneOnCompletion = true;
 
 		/// <summary>
-		///    Public readonly getter for the scene path.
+		///    Public property for the scene path, derived from the SceneAsset.
 		/// </summary>
-		public string ScenePath => _scenePath;
+		public string ScenePath => _sceneAsset != null ? AssetDatabase.GetAssetPath(_sceneAsset) : string.Empty;
 
 #if UNITY_EDITOR
 		/// <summary>
@@ -42,9 +36,6 @@ namespace NL.XRLab.Toolkit.Greybox.GameplayModules
 		[Tooltip("Reference to the scene that corresponds to this module.")] [SerializeField]
 		private SceneAsset _sceneAsset;
 
-		/// <summary>
-		///    Public readonly getter for the scene asset that corresponds to this module.
-		/// </summary>
 		public SceneAsset SceneAsset => _sceneAsset;
 #endif
 	}

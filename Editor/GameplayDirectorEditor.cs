@@ -1,6 +1,4 @@
-using System.Collections.Generic;
 using System.Linq;
-using NL.XRLab.Toolkit.Greybox.Director;
 using NL.XRLab.Toolkit.Greybox.GameplayModules;
 using UnityEditor;
 using UnityEngine;
@@ -9,16 +7,16 @@ using Logger = NL.XRLab.Toolkit.Greybox.Utils.Logger;
 
 namespace NL.XRLab.Toolkit.Greybox.Editor
 {
-	[CustomEditor(typeof(GameplayDirector))]
+	[CustomEditor(typeof(Director.GameplayDirector))]
 	public class GameplayDirectorEditor : UnityEditor.Editor
 	{
 		[SerializeField] private VisualTreeAsset _visualTreeAsset;
 
-		private GameplayDirector _director;
+		private Director.GameplayDirector _director;
 
 		private void OnEnable()
 		{
-			_director = (GameplayDirector)target;
+			_director = (Director.GameplayDirector)target;
 		}
 
 		public override VisualElement CreateInspectorGUI()
@@ -34,9 +32,9 @@ namespace NL.XRLab.Toolkit.Greybox.Editor
 		private void SyncBuildSettings(ClickEvent e)
 		{
 			Logger.Log("Syncing build settings with scenes from gameplay modules...");
-			GameplayModuleData[] modules = _director.GameplayModules.ToArray();
+			var modules = _director.GameplayModules.ToArray();
 
-			List<EditorBuildSettingsScene> scenesInBuildSettings = EditorBuildSettings.scenes.ToList();
+			var scenesInBuildSettings = EditorBuildSettings.scenes.ToList();
 			string[] scenePathsInBuildSettings = scenesInBuildSettings.Select(scene => scene.path).ToArray();
 
 			foreach (GameplayModuleData module in modules)
