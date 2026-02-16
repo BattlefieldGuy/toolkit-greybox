@@ -10,7 +10,7 @@ namespace NL.XRLab.Toolkit.Greybox.GameplayModules
 	/// </summary>
 	[CreateAssetMenu(
 		fileName = "new Gameplay Module Data",
-		menuName = "Greybox/Gameplay Module Data"
+		menuName = "XR-Lab/Gameplay Modules/Gameplay Module Data"
 	)]
 	public class GameplayModuleData : ScriptableObject
 	{

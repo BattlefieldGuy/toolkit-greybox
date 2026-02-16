@@ -9,7 +9,7 @@ namespace NL.XRLab.Toolkit.Greybox.Gameplay_Modules
 	/// </summary>
 	[CreateAssetMenu(
 		fileName = "Gameplay Event Identifier",
-		menuName = "Greybox/Gameplay Event Identifier"
+		menuName = "XR-Lab/Gameplay Modules/Gameplay Event Identifier"
 	)]
 	public class GameplayEventIdentifier : ScriptableObject { }
 }

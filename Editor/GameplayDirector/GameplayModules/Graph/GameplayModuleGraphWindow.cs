@@ -32,7 +32,7 @@ namespace NL.XRLab.Toolkit.Greybox.Editor.GameplayDirector.GameplayModules.Graph
 		/// <summary>
 		/// Shows the gameplay module graph window.
 		/// </summary>
-		[MenuItem("XR-Lab/Gameplay Director/Gameplay Module Graph")]
+		[MenuItem("XR-Lab/Open Gameplay Module Graph")]
 		public static void ShowWindow()
 		{
 			var window = GetWindow<GameplayModuleGraphWindow>("Gameplay Module Graph");
