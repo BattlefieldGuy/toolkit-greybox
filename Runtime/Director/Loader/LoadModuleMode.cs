@@ -13,6 +13,6 @@ namespace NL.XRLab.Toolkit.Greybox.Director.Loader
 		/// <summary>
 		///    Load the module additively but keep it inactive until explicitly activated.
 		/// </summary>
-		Preload
+		Preload,
 	}
 }

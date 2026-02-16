@@ -23,10 +23,12 @@ namespace NL.XRLab.Toolkit.Greybox.Director
 		/// <summary>
 		///    List of all gameplay modules available in the game. Configurable in the Unity Inspector.
 		/// </summary>
-		[Tooltip("All gameplay modules in the game. Non-sequential.")] [SerializeField]
+		[Tooltip("All gameplay modules in the game. Non-sequential.")]
+		[SerializeField]
 		private List<GameplayModuleData> _gameplayModules = new();
 
-		[SerializeField] private GameplayModuleDataEntry _startingModule;
+		[SerializeField]
+		private GameplayModuleDataEntry _startingModule;
 
 		/// <summary>
 		///    Event triggered when a module finishes preloading (~90% loaded).
@@ -101,9 +103,12 @@ namespace NL.XRLab.Toolkit.Greybox.Director
 		/// <param name="loadModuleMode">Specifies the loading mode (Single, Additive, Preload).</param>
 		/// <param name="sceneReadyEvent">Optional event triggered when the module is preloaded.</param>
 		/// <param name="sceneActivatedEvent">Optional event triggered when the module is activated.</param>
-		public void LoadModule(GameplayModuleData moduleToLoad, LoadModuleMode loadModuleMode,
+		public void LoadModule(
+			GameplayModuleData moduleToLoad,
+			LoadModuleMode loadModuleMode,
 			UnityEvent<AsyncOperation, GameplayModuleData> sceneReadyEvent = null,
-			UnityEvent<GameplayModule> sceneActivatedEvent = null)
+			UnityEvent<GameplayModule> sceneActivatedEvent = null
+		)
 		{
 			// Add callback listeners to track loaded modules.
 			sceneReadyEvent ??= new UnityEvent<AsyncOperation, GameplayModuleData>();
@@ -117,7 +122,8 @@ namespace NL.XRLab.Toolkit.Greybox.Director
 				moduleToLoad,
 				loadModuleMode,
 				sceneReadyEvent,
-				sceneActivatedEvent);
+				sceneActivatedEvent
+			);
 		}
 
 		/// <summary>
@@ -125,12 +131,16 @@ namespace NL.XRLab.Toolkit.Greybox.Director
 		/// </summary>
 		/// <param name="loadOperation">The AsyncOperation representing the preload process.</param>
 		/// <param name="gameplayModuleData">The GameplayModuleData associated with the module.</param>
-		private void AddReadyModule(AsyncOperation loadOperation, GameplayModuleData gameplayModuleData)
+		private void AddReadyModule(
+			AsyncOperation loadOperation,
+			GameplayModuleData gameplayModuleData
+		)
 		{
 			if (!_readyModules.TryAdd(gameplayModuleData, loadOperation))
 			{
 				Logger.LogError(
-					$"Module '{gameplayModuleData.name}' is already loaded. This should not happen.");
+					$"Module '{gameplayModuleData.name}' is already loaded. This should not happen."
+				);
 				return;
 			}
 
@@ -148,21 +158,32 @@ namespace NL.XRLab.Toolkit.Greybox.Director
 			if (!_activeModules.TryAdd(loadedModule.GameplayModuleData, loadedModule))
 			{
 				Logger.LogError(
-					$"Module '{loadedModule.GameplayModuleData.name}' is already active. This should not happen.");
+					$"Module '{loadedModule.GameplayModuleData.name}' is already active. This should not happen."
+				);
 				return;
 			}
 
 			loadedModule.OnModuleCompleted.AddListener(LoadConnectedModules);
 
-
 			Logger.Log($"Active module added: '{loadedModule.GameplayModuleData.name}'");
 			OnModuleActivated.Invoke(loadedModule);
 		}
 
+		/// <summary>
+		/// Loads modules that are connected to the given module.
+		/// </summary>
+		/// <param name="module">The module which provides the connected modules.</param>
 		private void LoadConnectedModules(GameplayModule module)
 		{
-			foreach (GameplayModuleDataEntry gameplayModuleDataEntry in module.GameplayModuleData.ConnectedModules)
-				LoadModule(gameplayModuleDataEntry.GameplayModuleData, gameplayModuleDataEntry.LoadModuleMode);
+			foreach (
+				GameplayModuleDataEntry gameplayModuleDataEntry in module
+					.GameplayModuleData
+					.ConnectedModules
+			)
+				LoadModule(
+					gameplayModuleDataEntry.GameplayModuleData,
+					gameplayModuleDataEntry.LoadModuleMode
+				);
 
 			if (module.GameplayModuleData.UnloadSceneOnCompletion)
 				SceneManager.UnloadSceneAsync(module.GameplayModuleData.SceneAsset.name);

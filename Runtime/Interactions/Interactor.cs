@@ -2,12 +2,16 @@
 
 namespace NL.XRLab.Toolkit.Greybox.Interactions
 {
+	/// <summary>
+	/// Abstract base class for interactors in the Greybox toolkit.
+	/// </summary>
 	public abstract class Interactor : MonoBehaviour
 	{
 		/// <summary>
 		///    The layer mask defining which layers can be interacted with.
 		/// </summary>
-		[SerializeField] protected LayerMask _interactionLayerMask;
+		[SerializeField]
+		protected LayerMask _interactionLayerMask;
 
 		/// <summary>
 		///    Interact with the given interactable object.

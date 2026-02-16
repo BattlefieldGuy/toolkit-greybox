@@ -35,7 +35,8 @@ namespace NL.XRLab.Toolkit.Greybox.Director.Loader
 			GameplayModuleData moduleToLoad,
 			LoadModuleMode loadModuleMode,
 			UnityEvent<AsyncOperation, GameplayModuleData> sceneReadyEvent = null,
-			UnityEvent<GameplayModule> sceneActivatedEvent = null)
+			UnityEvent<GameplayModule> sceneActivatedEvent = null
+		)
 		{
 			// Validate entry conditions.
 			// Module must not be null (we would have nothing to load).
@@ -49,14 +50,17 @@ namespace NL.XRLab.Toolkit.Greybox.Director.Loader
 			string scenePath = moduleToLoad.ScenePath;
 			if (string.IsNullOrEmpty(scenePath))
 			{
-				Logger.LogError($"ModuleLoader: ScenePath is null or empty for module '{moduleToLoad.name}'");
+				Logger.LogError(
+					$"ModuleLoader: ScenePath is null or empty for module '{moduleToLoad.name}'"
+				);
 				return;
 			}
 
 			// Warn if sceneReadyEvent is provided but loadModuleMode is not Preload
 			if (loadModuleMode != LoadModuleMode.Preload && sceneReadyEvent != null)
 				Logger.LogWarning(
-					"ModuleLoader: sceneReadyEvent provided but loadModuleMode is not Preload. The event will be ignored.");
+					"ModuleLoader: sceneReadyEvent provided but loadModuleMode is not Preload. The event will be ignored."
+				);
 
 			// Determine Unity's LoadSceneMode based on the requested module load mode.
 			var loadMode = LoadSceneMode.Additive;
@@ -74,10 +78,16 @@ namespace NL.XRLab.Toolkit.Greybox.Director.Loader
 			asyncOp.allowSceneActivation = loadModuleMode != LoadModuleMode.Preload;
 
 			// Start coroutine to monitor the loading process and fire relevant events.
-			GameplayDirector.Instance.StartCoroutine(WaitForSceneLoad(moduleToLoad, asyncOp, scenePath,
-				loadModuleMode == LoadModuleMode.Preload,
-				sceneReadyEvent,
-				sceneActivatedEvent));
+			GameplayDirector.Instance.StartCoroutine(
+				WaitForSceneLoad(
+					moduleToLoad,
+					asyncOp,
+					scenePath,
+					loadModuleMode == LoadModuleMode.Preload,
+					sceneReadyEvent,
+					sceneActivatedEvent
+				)
+			);
 		}
 
 		/// <summary>
@@ -105,7 +115,8 @@ namespace NL.XRLab.Toolkit.Greybox.Director.Loader
 			string scenePath,
 			bool preload,
 			UnityEvent<AsyncOperation, GameplayModuleData> sceneReadyEvent,
-			UnityEvent<GameplayModule> sceneActivatedEvent)
+			UnityEvent<GameplayModule> sceneActivatedEvent
+		)
 		{
 			// Wait until the scene loading is done.
 			while (!loadSceneAsyncOperation.isDone)
@@ -118,7 +129,8 @@ namespace NL.XRLab.Toolkit.Greybox.Director.Loader
 					sceneReadyEvent?.Invoke(loadSceneAsyncOperation, moduleToLoad);
 
 					// Wait until allowSceneActivation is true (set externally) before continuing.
-					while (!loadSceneAsyncOperation.allowSceneActivation) yield return null;
+					while (!loadSceneAsyncOperation.allowSceneActivation)
+						yield return null;
 					// Exit the outer while loop to continue to scene activation handling.
 					break;
 				}
@@ -153,12 +165,14 @@ namespace NL.XRLab.Toolkit.Greybox.Director.Loader
 			foreach (var rootObject in rootObjects)
 			{
 				rootObject.TryGetComponent(out GameplayModule module);
-				if (module) return module;
+				if (module)
+					return module;
 			}
 
 			// If no GameplayModule is present on any root object, log an error to aid debugging.
 			Logger.LogError(
-				$"No GameplayModule found in loaded scene: {scene.name}. Make sure the scene has a GameplayModule component in one of its root objects.");
+				$"No GameplayModule found in loaded scene: {scene.name}. Make sure the scene has a GameplayModule component in one of its root objects."
+			);
 			return null;
 		}
 	}

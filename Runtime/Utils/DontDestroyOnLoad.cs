@@ -30,7 +30,8 @@ namespace NL.XRLab.Toolkit.Greybox.Utils
 		/// </param>
 		public static void MarkAsDontDestroyOnLoad(GameObject obj, bool moveToRootIfNeeded = true)
 		{
-			if (moveToRootIfNeeded && obj.transform.parent != null) obj.transform.SetParent(null);
+			if (moveToRootIfNeeded && obj.transform.parent != null)
+				obj.transform.SetParent(null);
 			Logger.Log($" Marking {obj.name} as DontDestroyOnLoad.");
 			DontDestroyOnLoad(obj);
 		}

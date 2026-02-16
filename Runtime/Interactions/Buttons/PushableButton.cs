@@ -3,18 +3,38 @@ using UnityEngine;
 
 namespace NL.XRLab.Toolkit.Greybox.Interactions.Buttons
 {
+	/// <summary>
+	/// A pushable button that visually moves when pressed and released.
+	/// </summary>
 	public class PushableButton : PressableButton
 	{
-		[SerializeField] private Transform _gfxToMove;
+		/// <summary>
+		/// The Transform of the graphics that should move when the button is pressed and released.
+		/// </summary>
+		[SerializeField]
+		private Transform _gfxToMove;
 
-		[SerializeField] private float _travelDistance = 0.2f;
-		[SerializeField] private float _travelDuration = 0.75f;
+		/// <summary>
+		/// The distance the button's graphics should move when pressed, in local space units.
+		/// </summary>
+		[SerializeField]
+		private float _travelDistance = 0.2f;
 
+		/// <summary>
+		/// The duration of the movement when the button is pressed or released, in seconds.
+		/// </summary>
+		[SerializeField]
+		private float _travelDuration = 0.75f;
+
+		/// <summary>
+		/// The local position of the button's graphics when the button is not pressed.
+		/// </summary>
 		private Vector3 _releasedPosition;
 
-		private Vector3 _pressedPosition =>
-			_releasedPosition + Vector3.down * _travelDistance;
-
+		/// <summary>
+		/// The local position of the button's graphics when the button is pressed.
+		/// </summary>
+		private Vector3 _pressedPosition => _releasedPosition + Vector3.down * _travelDistance;
 
 		private void Awake()
 		{
@@ -35,24 +55,32 @@ namespace NL.XRLab.Toolkit.Greybox.Interactions.Buttons
 			OnRelease.RemoveListener(MoveUp);
 		}
 
+		/// <summary>
+		/// Moves the button's graphics down to the pressed position over the travel duration.
+		/// </summary>
 		private void MoveDown()
 		{
-			Debug.Log("Move Down");
-			StartCoroutine(TransformExtensions.MoveToLocalPositionCoroutine(
-				_gfxToMove,
-				_pressedPosition,
-				_travelDuration
-			));
+			StartCoroutine(
+				TransformExtensions.MoveToLocalPositionCoroutine(
+					_gfxToMove,
+					_pressedPosition,
+					_travelDuration
+				)
+			);
 		}
 
+		/// <summary>
+		/// Moves the button's graphics up to the released position over the travel duration.
+		/// </summary>
 		private void MoveUp()
 		{
-			Debug.Log("Move Up");
-			StartCoroutine(TransformExtensions.MoveToLocalPositionCoroutine(
-				_gfxToMove,
-				_releasedPosition,
-				_travelDuration
-			));
+			StartCoroutine(
+				TransformExtensions.MoveToLocalPositionCoroutine(
+					_gfxToMove,
+					_releasedPosition,
+					_travelDuration
+				)
+			);
 		}
 	}
 }

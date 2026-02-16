@@ -4,6 +4,9 @@ using UnityEngine.SceneManagement;
 
 namespace NL.XRLab.Toolkit.Greybox.Utils
 {
+	/// <summary>
+	/// Utility class for handling MonoBehaviour singletons.
+	/// </summary>
 	public static class SingletonUtils
 	{
 		/// <summary>
@@ -15,8 +18,11 @@ namespace NL.XRLab.Toolkit.Greybox.Utils
 		/// <param name="thisObject">The current MonoBehaviour instance calling this.</param>
 		/// <param name="dontDestroyOnLoad">Whether to mark the singleton to persist across scene loads.</param>
 		/// <returns>True if this instance is the singleton, false if it was destroyed.</returns>
-		public static bool HandleSingletonCreation<T>(ref T instance, MonoBehaviour thisObject,
-			bool dontDestroyOnLoad = true)
+		public static bool HandleSingletonCreation<T>(
+			ref T instance,
+			MonoBehaviour thisObject,
+			bool dontDestroyOnLoad = true
+		)
 			where T : MonoBehaviour
 		{
 			if (instance != null && instance != thisObject)
@@ -27,18 +33,23 @@ namespace NL.XRLab.Toolkit.Greybox.Utils
 
 			instance = (T)thisObject;
 
-			if (!dontDestroyOnLoad) return true;
+			if (!dontDestroyOnLoad)
+				return true;
 			Scene dontDestroyOnLoadScene = SceneManager.GetSceneByName("DontDestroyOnLoad");
 
 			// See if any parent is in DontDestroyOnLoad scene
 			GameObject current = thisObject.gameObject;
 			while (current.transform.parent != null)
 			{
-				if (dontDestroyOnLoadScene.IsValid() && current.transform.parent.gameObject.scene == dontDestroyOnLoadScene)
+				if (
+					dontDestroyOnLoadScene.IsValid()
+					&& current.transform.parent.gameObject.scene == dontDestroyOnLoadScene
+				)
 				{
 					// A parent is already in DontDestroyOnLoad scene, no action needed
 					Logger.Log(
-						$"SingletonUtils: A parent of {thisObject.gameObject.name} ({current.transform.parent.gameObject.name}) already lives in the DontDestroyOnLoad scene, not marking it as DestroyOnLoad.");
+						$"SingletonUtils: A parent of {thisObject.gameObject.name} ({current.transform.parent.gameObject.name}) already lives in the DontDestroyOnLoad scene, not marking it as DestroyOnLoad."
+					);
 					return true;
 				}
 
@@ -46,7 +57,8 @@ namespace NL.XRLab.Toolkit.Greybox.Utils
 				{
 					// A parent has DontDestroyOnLoad component, no action needed
 					Logger.Log(
-						$"SingletonUtils: A parent of {thisObject.gameObject.name} ({current.transform.parent.gameObject.name}) already has a DontDestroyOnLoad component, not marking it as DestroyOnLoad.");
+						$"SingletonUtils: A parent of {thisObject.gameObject.name} ({current.transform.parent.gameObject.name}) already has a DontDestroyOnLoad component, not marking it as DestroyOnLoad."
+					);
 					return true;
 				}
 
@@ -60,7 +72,8 @@ namespace NL.XRLab.Toolkit.Greybox.Utils
 				if (rootObjects.Any(root => root == thisObject.gameObject))
 				{
 					Logger.LogWarning(
-						$"SingletonUtils: {thisObject.gameObject.name} is already in DontDestroyOnLoad scene, not marking it as DestroyOnLoad.");
+						$"SingletonUtils: {thisObject.gameObject.name} is already in DontDestroyOnLoad scene, not marking it as DestroyOnLoad."
+					);
 					return true;
 				}
 			}

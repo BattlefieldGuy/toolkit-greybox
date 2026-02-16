@@ -5,15 +5,29 @@ using UnityEngine.Events;
 
 namespace NL.XRLab.Toolkit.Greybox.Extensions.Events
 {
+	/// <summary>
+	///   A wrapper around UnityEvent that allows for inspector-assignable conditions to be checked before invocation.
+	/// </summary>
 	[Serializable]
 	public class ConditionalUnityEvent
 	{
-		// List of inspector-assignable condition methods
-		[SerializeField] private List<SerializableCondition> _conditions = new();
+		/// <summary>
+		///  List of conditions that must be met for the event to be invoked. Each condition is a SerializableCondition, which can be configured in the Unity Inspector.
+		/// </summary>
+		[SerializeField]
+		private List<SerializableCondition> _conditions = new();
 
-		// The event to be invoked
-		[SerializeField] private UnityEvent _onConditionsAreMet;
-		[SerializeField] private UnityEvent _onConditionsAreNotMet;
+		/// <summary>
+		///   UnityEvent to invoke if all conditions are met. This can be configured in the Unity Inspector.
+		/// </summary>
+		[SerializeField]
+		private UnityEvent _onConditionsAreMet;
+
+		/// <summary>
+		///  UnityEvent to invoke if any condition is not met. This can be configured in the Unity Inspector.
+		/// </summary>
+		[SerializeField]
+		private UnityEvent _onConditionsAreNotMet;
 
 		/// <summary>
 		///    Initializes all SerializableConditions within this event, building the delegate cache.
@@ -21,7 +35,8 @@ namespace NL.XRLab.Toolkit.Greybox.Extensions.Events
 		/// </summary>
 		public void CacheConditionDelegates()
 		{
-			foreach (SerializableCondition condition in _conditions) condition.CacheConditionDelegate();
+			foreach (SerializableCondition condition in _conditions)
+				condition.CacheConditionDelegate();
 		}
 
 		/// <summary>
