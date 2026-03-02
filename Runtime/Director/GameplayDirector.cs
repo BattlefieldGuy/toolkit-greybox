@@ -23,12 +23,10 @@ namespace NL.XRLab.Toolkit.Greybox.Director
 		/// <summary>
 		///    List of all gameplay modules available in the game. Configurable in the Unity Inspector.
 		/// </summary>
-		[Tooltip("All gameplay modules in the game. Non-sequential.")]
-		[SerializeField]
+		[Tooltip("All gameplay modules in the game. Non-sequential.")] [SerializeField]
 		private List<GameplayModuleData> _gameplayModules = new();
 
-		[SerializeField]
-		private GameplayModuleDataEntry _startingModule;
+		[SerializeField] private GameplayModuleDataEntry _startingModule;
 
 		/// <summary>
 		///    Event triggered when a module finishes preloading (~90% loaded).
@@ -170,7 +168,7 @@ namespace NL.XRLab.Toolkit.Greybox.Director
 		}
 
 		/// <summary>
-		/// Loads modules that are connected to the given module.
+		///    Loads modules that are connected to the given module.
 		/// </summary>
 		/// <param name="module">The module which provides the connected modules.</param>
 		private void LoadConnectedModules(GameplayModule module)
@@ -186,7 +184,7 @@ namespace NL.XRLab.Toolkit.Greybox.Director
 				);
 
 			if (module.GameplayModuleData.UnloadSceneOnCompletion)
-				SceneManager.UnloadSceneAsync(module.GameplayModuleData.SceneAsset.name);
+				SceneManager.UnloadSceneAsync(module.GameplayModuleData.ScenePath);
 		}
 	}
 }
