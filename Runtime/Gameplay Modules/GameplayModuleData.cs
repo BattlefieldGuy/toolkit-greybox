@@ -35,6 +35,8 @@ namespace NL.XRLab.Toolkit.Greybox.GameplayModules
 		///    Serialized runtime scene path. This is safe to use at runtime (does not depend on UnityEditor).
 		/// </summary>
 		[Tooltip("Path to the scene asset (used at runtime).")]
+		[HideInInspector]
+		[SerializeField]
 		private string _scenePath = string.Empty;
 
 		/// <summary>
@@ -48,15 +50,17 @@ namespace NL.XRLab.Toolkit.Greybox.GameplayModules
 		///    included in Build Settings or loaded via Addressables/AssetReference for runtime loading to work.
 		/// </summary>
 		public string SceneName =>
-			string.IsNullOrEmpty(_scenePath) ? string.Empty : Path.GetFileNameWithoutExtension(_scenePath);
-
+			string.IsNullOrEmpty(_scenePath)
+				? string.Empty
+				: Path.GetFileNameWithoutExtension(_scenePath);
 
 #if UNITY_EDITOR
 		/// <summary>
 		///    Reference to the scene asset that corresponds to this module.
 		///    This field is only available in the editor and is used by the GameplayModuleDataEditor to set the scene path.
 		/// </summary>
-		[Tooltip("Reference to the scene that corresponds to this module.")] [SerializeField]
+		[Tooltip("Reference to the scene that corresponds to this module.")]
+		[SerializeField]
 		private SceneAsset _sceneAsset;
 
 		/// <summary>
